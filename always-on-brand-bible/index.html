@@ -397,6 +397,20 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 .sig .sdiv{height:1px;background:var(--gold-line);margin:13px 0}
 .sig .swm{font-family:var(--font-serif);color:var(--gold);font-size:.98rem}
 .sig .stag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-top:5px}
+/* functional photo upload + editable fields */
+.sig .ph.phup{cursor:pointer;overflow:hidden;position:relative;padding:0}
+.sig .ph .ph-img{width:100%;height:100%;object-fit:cover;display:block}
+.sig .ph .ph-hint{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.62);color:#f4f1ea;
+  font-family:var(--font-mono);font-size:7.5px;letter-spacing:.06em;text-transform:uppercase;text-align:center;
+  padding:3px 0;opacity:0;transition:opacity .18s}
+.sig .ph.phup:hover .ph-hint{opacity:1}
+.sig .ph.phup:hover{border-color:var(--gold)}
+.sig [contenteditable]{outline:none;border-radius:3px;transition:background .15s,box-shadow .15s}
+.sig [contenteditable]:hover{box-shadow:inset 0 -1px 0 var(--gold-line)}
+.sig [contenteditable]:focus{background:rgba(201,169,110,.08);box-shadow:inset 0 0 0 1px var(--gold-line)}
+.sig-tip{grid-column:1/-1;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--gold-dim);
+  margin-top:14px;display:flex;align-items:center;gap:8px}
+.sig-tip b{color:var(--gold);font-weight:600}
 
 /* ---------- downloads ---------- */
 .dl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
@@ -628,7 +642,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     <div class="nav-links">
       <a href="#guide">Blake</a><a href="#logo">Logo</a><a href="#mark">Mark</a><a href="#color">Color</a>
       <a href="#type">Type</a><a href="#ethos">Ethos</a><a href="#story">Story</a>
-      <a href="#offer">Offer</a><a href="#voice">Voice</a><a href="#never">Never</a>
+      <a href="#offer">Offer</a><a href="#voice">Voice</a><a href="#signature">Email</a><a href="#never">Never</a>
     </div>
   </div>
 </nav>
@@ -1346,34 +1360,45 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
       <div class="txt">
         <p class="eyebrow">Email</p>
         <h2 class="sec-title">Email signatures</h2>
-        <p class="lead">Blake signs under Pemberton Real Estate; team members sign under BlakeSuddath.com. Photo is 80&times;80, square, no rounded corners. Helvetica Neue throughout, gold divider, wordmark and tagline anchor the bottom.</p>
+        <p class="lead">Blake signs under Inner Cirql Coaching; team members sign under BlakeSuddath.com. Every field is editable and the 80&times;80 photo is uploadable &mdash; click the frame to swap it, edit the text inline, then copy the ready-to-paste HTML. Helvetica Neue throughout, gold divider, wordmark and tagline anchor the bottom.</p>
       </div>
     </div>
     <div class="grid g2">
-      <div class="sig">
-        <div class="ph">PHOTO<br>80&times;80</div>
+      <div class="sig" data-sig="blake">
+        <label class="ph phup" title="Click to change photo">
+          <img class="ph-img" src="blake-headshot.jpg" alt="Blake Suddath">
+          <span class="ph-ph" style="display:none">PHOTO<br>80&times;80</span>
+          <span class="ph-hint">Change photo</span>
+          <input type="file" accept="image/*" class="ph-file" hidden>
+        </label>
         <div>
-          <div class="snm">blake suddath</div>
-          <div class="st">Director of Growth, Pemberton Real Estate</div>
-          <div class="sc">651.497.5624<br>Blake@Soldwithsuddath.com</div>
+          <div class="snm" contenteditable="true" spellcheck="false">blake suddath</div>
+          <div class="st" contenteditable="true" spellcheck="false">Founder | Coach, Inner Cirql Coaching</div>
+          <div class="sc"><span class="sphone" contenteditable="true" spellcheck="false">651.497.5624</span><br><span class="semail" contenteditable="true" spellcheck="false">Blake@Soldwithsuddath.com</span></div>
           <div class="sdiv"></div>
-          <div class="swm">blakesuddath.com</div>
-          <div class="stag">Stop Chasing. Start Building.</div>
+          <div class="swm" contenteditable="true" spellcheck="false">blakesuddath.com</div>
+          <div class="stag" contenteditable="true" spellcheck="false">Stop Chasing. Start Building.</div>
           <button class="copybtn" data-sig="blake" type="button">Copy HTML code</button>
         </div>
       </div>
-      <div class="sig">
-        <div class="ph">PHOTO<br>80&times;80</div>
+      <div class="sig" data-sig="team">
+        <label class="ph phup" title="Click to upload photo">
+          <img class="ph-img" src="" alt="" style="display:none">
+          <span class="ph-ph">PHOTO<br>80&times;80</span>
+          <span class="ph-hint">Upload photo</span>
+          <input type="file" accept="image/*" class="ph-file" hidden>
+        </label>
         <div>
-          <div class="snm">[full name]</div>
-          <div class="st">[Title], BlakeSuddath.com</div>
-          <div class="sc">[Phone]<br>[Email]</div>
+          <div class="snm" contenteditable="true" spellcheck="false">[full name]</div>
+          <div class="st" contenteditable="true" spellcheck="false">[Title], BlakeSuddath.com</div>
+          <div class="sc"><span class="sphone" contenteditable="true" spellcheck="false">[Phone]</span><br><span class="semail" contenteditable="true" spellcheck="false">[Email]</span></div>
           <div class="sdiv"></div>
-          <div class="swm">blakesuddath.com</div>
-          <div class="stag">Stop Chasing. Start Building.</div>
+          <div class="swm" contenteditable="true" spellcheck="false">blakesuddath.com</div>
+          <div class="stag" contenteditable="true" spellcheck="false">Stop Chasing. Start Building.</div>
           <button class="copybtn" data-sig="team" type="button">Copy HTML code</button>
         </div>
       </div>
+      <p class="sig-tip"><b>Tip</b> &nbsp;Click the photo frame to upload &middot; click any text to edit &middot; then Copy HTML code and paste into your email signature settings.</p>
     </div>
   </section>
 
@@ -1522,17 +1547,54 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
   renderIcons('');
   if(input) input.addEventListener('input',function(){ renderIcons(input.value); });
 
-  /* ---- copy email signature HTML ---- */
+  /* ---- email signature: upload photo, edit inline, copy ready HTML ---- */
+  var SIG_IMG_BASE='https://always-on-agent-system-brand.netlify.app/blake-headshot.jpg';
+  function sigEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function sigTxt(card,sel){ var e=card.querySelector(sel); return e?e.textContent.replace(/\s+/g,' ').trim():''; }
+  function sigPhotoSrc(card){
+    var img=card.querySelector('.ph-img');
+    if(!img || img.style.display==='none' || !img.getAttribute('src')) return '';
+    var src=img.src;
+    if(src.indexOf('data:')===0) return src;                 /* uploaded -> embed base64 */
+    if(/blake-headshot\.jpg/.test(src)) return SIG_IMG_BASE;  /* default -> hosted URL */
+    return src;
+  }
   function sigHTML(kind){
-    var foot='<div style="font-family:Georgia,serif;color:#c9a96e;font-size:15px;margin-top:8px">blakesuddath.com</div><div style="font-family:Arial,sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#a8905c;margin-top:2px">Stop Chasing. Start Building.</div>';
-    if(kind==='blake') return '<table cellpadding="0" cellspacing="0" style="font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif;color:#141414;font-size:13px"><tr><td style="padding-right:14px;vertical-align:top"><img src="HEADSHOT_URL" width="80" height="80" alt="Blake Suddath" style="display:block;border-radius:4px"></td><td style="border-left:2px solid #c9a96e;padding-left:14px;vertical-align:top"><div style="font-family:Georgia,serif;font-weight:600;font-size:18px">blake suddath</div><div style="color:#555">Director of Growth, Pemberton Real Estate</div><div style="color:#555;margin-top:4px">651.497.5624 &nbsp;|&nbsp; Blake@Soldwithsuddath.com</div>'+foot+'</td></tr></table>';
-    return '<table cellpadding="0" cellspacing="0" style="font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif;color:#141414;font-size:13px"><tr><td style="padding-right:14px;vertical-align:top"><img src="HEADSHOT_URL" width="80" height="80" alt="[full name]" style="display:block;border-radius:4px"></td><td style="border-left:2px solid #c9a96e;padding-left:14px;vertical-align:top"><div style="font-family:Georgia,serif;font-weight:600;font-size:18px">[full name]</div><div style="color:#555">[Title], BlakeSuddath.com</div><div style="color:#555;margin-top:4px">[Phone] &nbsp;|&nbsp; [Email]</div>'+foot+'</td></tr></table>';
+    var card=document.querySelector('.sig[data-sig="'+kind+'"]');
+    var name=sigTxt(card,'.snm'), title=sigTxt(card,'.st'),
+        phone=sigTxt(card,'.sphone'), email=sigTxt(card,'.semail'),
+        wm=sigTxt(card,'.swm'), tag=sigTxt(card,'.stag'), src=sigPhotoSrc(card);
+    var photoCell = src ? '<td style="padding-right:14px;vertical-align:top"><img src="'+src+'" width="80" height="80" alt="'+sigEsc(name)+'" style="display:block;border-radius:4px"></td>' : '';
+    var contact = [phone,email].filter(function(x){return x;}).join(' &nbsp;|&nbsp; ');
+    return '<table cellpadding="0" cellspacing="0" style="font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif;color:#141414;font-size:13px"><tr>'
+      + photoCell
+      + '<td style="border-left:2px solid #c9a96e;padding-left:14px;vertical-align:top">'
+      + '<div style="font-family:Georgia,serif;font-weight:600;font-size:18px">'+sigEsc(name)+'</div>'
+      + '<div style="color:#555">'+sigEsc(title)+'</div>'
+      + (contact?'<div style="color:#555;margin-top:4px">'+contact+'</div>':'')
+      + '<div style="font-family:Georgia,serif;color:#c9a96e;font-size:15px;margin-top:8px">'+sigEsc(wm)+'</div>'
+      + '<div style="font-family:Arial,sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#a8905c;margin-top:2px">'+sigEsc(tag)+'</div>'
+      + '</td></tr></table>';
   }
   document.querySelectorAll('.copybtn[data-sig]').forEach(function(b){ b.addEventListener('click',function(){
     var h=sigHTML(b.getAttribute('data-sig'));
     function ok(){ toast('Signature HTML copied'); }
-    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(h).then(ok, fallback); } else fallback();
     function fallback(){ var t=document.createElement('textarea'); t.value=h; document.body.appendChild(t); t.select(); try{ document.execCommand('copy'); ok(); }catch(e){ toast('Copy failed — select manually'); } t.remove(); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(h).then(ok, fallback); } else fallback();
+  }); });
+  /* upload + center-crop square photo (client-side, embeds into copied HTML) */
+  function sigCrop(file, cb){
+    var img=new Image(), url=URL.createObjectURL(file);
+    img.onload=function(){ var s=Math.min(img.naturalWidth,img.naturalHeight), sx=(img.naturalWidth-s)/2, sy=(img.naturalHeight-s)/2, size=320;
+      var c=document.createElement('canvas'); c.width=size; c.height=size; var x=c.getContext('2d'); x.imageSmoothingQuality='high';
+      x.drawImage(img,sx,sy,s,s,0,0,size,size); URL.revokeObjectURL(url); cb(c.toDataURL('image/jpeg',0.85)); };
+    img.onerror=function(){ URL.revokeObjectURL(url); toast('Could not read that image'); };
+    img.src=url;
+  }
+  document.querySelectorAll('.sig .ph-file').forEach(function(inp){ inp.addEventListener('change',function(){
+    var f=inp.files&&inp.files[0]; if(!f) return;
+    sigCrop(f,function(uri){ var card=inp.closest('.sig'), im=card.querySelector('.ph-img'), ph=card.querySelector('.ph-ph');
+      im.src=uri; im.style.display='block'; im.alt=sigTxt(card,'.snm'); if(ph) ph.style.display='none'; toast('Photo added'); });
   }); });
 
   /* ---- campaign replay ---- */
