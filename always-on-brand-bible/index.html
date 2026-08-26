@@ -551,6 +551,17 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 .iccat:hover{border-color:var(--gold-line);color:var(--ink)}
 .iccat.on{background:var(--gold);border-color:var(--gold);color:#141414}
 .icon-empty{color:var(--body);font-size:.9rem;padding:14px 2px}
+/* ---------- icon generator ---------- */
+.gen{margin-top:42px;padding-top:34px;border-top:1px solid var(--line)}
+.gen-bar{display:flex;gap:10px;margin:6px 0 12px;flex-wrap:wrap}
+.gen-bar input{flex:1;min-width:220px;background:var(--surface);border:1px solid var(--line-2);border-radius:10px;
+  padding:13px 16px;color:var(--ink);font-family:var(--font-sans);font-size:14px}
+.gen-bar input:focus{outline:none;border-color:var(--gold)}
+.gen-go{background:linear-gradient(135deg,#d8bd85,#c9a96e);color:#171717;border:0;border-radius:10px;padding:0 26px;
+  font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.gen-go:hover{filter:brightness(1.06)}
+.gen-status{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;color:var(--gold-dim);margin-bottom:16px;min-height:16px}
+#gen-grid .ic img{width:28px;height:28px;display:block}
 
 /* ---------- story card maker ---------- */
 .cardmaker{display:grid;grid-template-columns:1fr 300px;gap:30px;align-items:start;margin-top:8px}
@@ -1372,7 +1383,18 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     </div>
     <div class="icon-cats" id="icon-cats"></div>
     <div class="icon-grid" id="icon-grid"></div>
-    <p class="icon-empty" id="icon-empty" style="display:none">No icons match that word yet. Try a synonym &mdash; &ldquo;home&rdquo;, &ldquo;money&rdquo;, &ldquo;video&rdquo;, or a category above.</p>
+    <p class="icon-empty" id="icon-empty" style="display:none">No icons match that word yet &mdash; try the generator below, which searches 200,000+ icons.</p>
+
+    <div class="gen">
+      <p class="group-label" style="margin-top:0">Generate Any Icon</p>
+      <p class="group-sub">Didn&rsquo;t find it above? Type a word and pull a matching line icon from an open catalog of <strong>200,000+</strong>, recolored to brand gold. Best with a single keyword &mdash; try &ldquo;drone&rdquo;, &ldquo;chatbot&rdquo;, &ldquo;podcast&rdquo;, &ldquo;calculator&rdquo;, &ldquo;handshake&rdquo;. Download as PNG or SVG.</p>
+      <div class="gen-bar">
+        <input type="text" id="gen-input" placeholder="Type a word (drone, chatbot, podcast, calculator, key...)" aria-label="Generate an icon">
+        <button type="button" id="gen-go" class="gen-go">&rarr; Generate</button>
+      </div>
+      <div class="gen-status" id="gen-status"></div>
+      <div class="icon-grid" id="gen-grid"></div>
+    </div>
   </section>
 
   <!-- STORY CARD MAKER -->
@@ -1635,6 +1657,24 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     {n:'automation',c:'biz',k:'automation system runs loop cycle always on',s:'<path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 3v4h-4"/>'},
     {n:'funnel',c:'biz',k:'funnel pipeline leads convert sales filter',s:'<path d="M4 5h16l-6 7v6l-4 2v-8z"/>'},
     {n:'community',c:'biz',k:'community team network people group audience soi',s:'<circle cx="6" cy="9" r="2.3"/><circle cx="18" cy="9" r="2.3"/><circle cx="12" cy="17" r="2.3"/><path d="M8.4 9h7.2M7.6 10.8l3 4.4M16.4 10.8l-3 4.4"/>'},
+    {n:'floor-plan',c:'biz',k:'floor plan blueprint layout rooms floorplan house design',s:'<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 10h9M12 3v18M12 14h9M17 14v7"/>'},
+    {n:'bedroom',c:'biz',k:'bed bedroom beds sleep room master listing',s:'<path d="M2 17v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4"/><path d="M2 17h20M2 13v5M22 13v5"/><path d="M6 11V9.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V11"/>'},
+    {n:'bathroom',c:'biz',k:'bath bathroom bathtub shower tub bathrooms listing',s:'<path d="M4 12V6.5A2.5 2.5 0 0 1 6.5 4a2.5 2.5 0 0 1 2.5 2.5"/><path d="M7 6.5h.01"/><path d="M3 12h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M7 19l-1.5 2M17 19l1.5 2"/>'},
+    {n:'garage',c:'biz',k:'garage parking car port carport driveway',s:'<path d="M3 21V9l9-4.5L21 9v12"/><path d="M6 21v-7h12v7"/><path d="M6 17h12"/>'},
+    {n:'sqft',c:'biz',k:'ruler measure size dimension sqft square feet area footage',s:'<rect x="2.5" y="8" width="19" height="8" rx="1"/><path d="M6.5 8v3M10.5 8v4M14.5 8v3M18.5 8v4"/>'},
+    {n:'open-house',c:'biz',k:'open house showing tour visit door walkthrough available listing',s:'<path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/><path d="M14 19v-4.5a2 2 0 0 0-4 0"/>'},
+    {n:'for-rent',c:'biz',k:'rent rental lease for rent tenant landlord apartment leasing',s:'<rect x="4" y="5" width="15" height="8" rx="1"/><circle cx="8.5" cy="9" r="1.6"/><path d="M9.9 10.3L13.5 8.7M11.5 13v6M8 21h7"/>'},
+    {n:'moving',c:'biz',k:'moving box boxes relocate move packing shipping movein',s:'<path d="M4 8.5l8-4 8 4v7l-8 4-8-4z"/><path d="M4 8.5l8 4 8-4M12 12.5v7M8 6.2l8 4"/>'},
+    {n:'inspection',c:'biz',k:'inspection inspect report checklist clipboard home audit review appraisal',s:'<path d="M6 3h8l3 3v5"/><path d="M14 3v3h3"/><path d="M6 3v16h5"/><circle cx="16.5" cy="16.5" r="3"/><path d="M18.7 18.7L21 21"/>'},
+    {n:'neighborhood',c:'biz',k:'neighborhood community houses homes area district block subdivision',s:'<path d="M2 20v-7l4-3 4 3M10 20v-8l6-4 6 4v8"/><path d="M2 20h20M6 20v-3M16 20v-3"/>'},
+    {n:'land',c:'biz',k:'land lot terrain plot acreage ground vacant parcel property',s:'<path d="M2 18l6-8 4 5 3-3 7 6"/><path d="M2 21h20"/><circle cx="8" cy="8" r="1.4"/>'},
+    {n:'pool',c:'biz',k:'pool swimming water spa amenity hot tub backyard',s:'<path d="M3 15c1.6 0 1.6 1 3.2 1s1.6-1 3.2-1 1.6 1 3.2 1 1.6-1 3.2-1 1.6 1 3.2 1"/><path d="M3 19c1.6 0 1.6 1 3.2 1s1.6-1 3.2-1 1.6 1 3.2 1 1.6-1 3.2-1 1.6 1 3.2 1"/><path d="M8 12V5.5A2 2 0 0 1 12 5M8 8.5h4"/>'},
+    {n:'roof',c:'biz',k:'roof roofing shingle house top attic',s:'<path d="M2 12L12 4l10 8"/><path d="M5 12v7h14v-7"/><path d="M9 19v-4h6v4"/>'},
+    {n:'coaching',c:'biz',k:'coaching coach mentor teach training lesson guide business coaching program',s:'<circle cx="8.5" cy="8" r="3"/><path d="M3.5 20a5 5 0 0 1 10 0"/><path d="M16 8h5M16 11.5h4M16 15h5"/>'},
+    {n:'webinar',c:'biz',k:'webinar presentation screen slides workshop training live class seminar',s:'<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M12 16v4M8 20h8"/><path d="M7 12l2.5-3 2 2L15 7.5"/>'},
+    {n:'roadmap',c:'biz',k:'roadmap plan milestones steps journey strategy timeline process path system',s:'<circle cx="6" cy="9" r="2"/><circle cx="18" cy="15" r="2"/><path d="M6 11v3a2 2 0 0 0 2 2h8M18 13V8a2 2 0 0 0-2-2H8"/>'},
+    {n:'certificate',c:'biz',k:'certificate certification badge credential award diploma qualified license accredited',s:'<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M7 8h10M7 11h6"/><circle cx="12" cy="17.5" r="2.3"/><path d="M10.2 19l-1 3 2.8-1.6L14.8 22l-1-3"/>'},
+    {n:'video-call',c:'biz',k:'video call zoom meeting virtual conference facetime online coaching',s:'<rect x="3" y="6" width="12" height="12" rx="2"/><path d="M15 10l6-3v10l-6-3z"/><circle cx="9" cy="12" r="2"/>'},
     /* ---- everyday ---- */
     {n:'apple',c:'object',k:'apple fruit health food',s:'<path d="M12 7c-1.2-1.5-3.2-1.7-4.6-.6-1.6 1.3-1.7 4.2-.5 6.9.9 2 2 3.7 3.1 3.7.7 0 1.2-.4 2-.4s1.3.4 2 .4c1.1 0 2.2-1.7 3.1-3.7 1.2-2.7 1.1-5.6-.5-6.9C14.7 5.3 12.7 5.5 12 7z"/><path d="M12 7c0-1.5.5-2.8 2-3.2"/>'},
     {n:'book',c:'object',k:'book bible read library manual guide reading ebook',s:'<path d="M12 6C10 4.5 7 4.5 4 5v13c3-.5 6-.5 8 1 2-1.5 5-1.5 8-1V5c-3-.5-6-.5-8 1z"/><path d="M12 6v13"/>'},
@@ -1692,6 +1732,36 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
   if(chipsWrap){ ICON_CATS.forEach(function(cat){ var b=document.createElement('button'); b.type='button'; b.className='iccat'+(cat.k===activeCat?' on':''); b.innerHTML=cat.n; b.addEventListener('click',function(){ activeCat=cat.k; chipsWrap.querySelectorAll('.iccat').forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); renderIcons(input?input.value:''); }); chipsWrap.appendChild(b); }); }
   renderIcons('');
   if(input) input.addEventListener('input',function(){ renderIcons(input.value); });
+
+  /* ---- icon generator (search 200k+ catalog, recolor gold) ---- */
+  (function(){
+    var gi=document.getElementById('gen-input'), gg=document.getElementById('gen-go'), gs=document.getElementById('gen-status'), gGrid=document.getElementById('gen-grid');
+    if(!gi) return;
+    var API='https://api.iconify.design';
+    var LINE_SETS=/^(lucide|tabler|hugeicons|mynaui|iconoir|ph|carbon|mingcute|basil|humbleicons|majesticons|garden|stash|gg|solar|material-symbols-light|mdi-light|ci|nrk|akar-icons|ph-bold)$/;
+    var BAD=/(fill|filled|bold|solid|duotone|twotone|sharp)/i, GOOD=/(outline|linear|line|light|stroke|thin|regular)/i;
+    function isLine(id){ if(BAD.test(id)) return false; if(GOOD.test(id)) return true; return LINE_SETS.test(id.split(':')[0]); }
+    function iconURL(id,size){ return API+'/'+id.replace(':','/')+'.svg?color=%23c9a96e&height='+(size||64); }
+    function safe(id){ return 'icon-'+id.replace(/[:\/]/g,'-'); }
+    function genDLsvg(id){ fetch(iconURL(id,96)).then(function(r){return r.text();}).then(function(svg){ dlSVG(safe(id), svg); }).catch(function(){ toast('Download failed'); }); }
+    function genDLpng(id){ var img=new Image(); img.crossOrigin='anonymous'; img.onload=function(){ var c=document.createElement('canvas'); c.width=512; c.height=512; var x=c.getContext('2d'); x.drawImage(img,0,0,512,512); try{ c.toBlob(function(bl){ if(bl){ dl(safe(id)+'.png',bl); toast('Downloaded PNG'); } else toast('PNG failed'); },'image/png'); }catch(e){ toast('PNG failed'); } }; img.onerror=function(){ toast('PNG failed'); }; img.src=iconURL(id,512); }
+    function render(ids){ gGrid.innerHTML=''; ids.forEach(function(id){ var name=id.split(':')[1]||id; var d=document.createElement('div'); d.className='ic';
+      d.innerHTML='<img src="'+iconURL(id,64)+'" alt="'+name+'"><span class="icn">'+name+'</span><span class="icfmt"><button type="button" class="icf" data-f="png">PNG</button><button type="button" class="icf" data-f="svg">SVG</button></span>';
+      d.querySelector('[data-f="png"]').addEventListener('click',function(){ genDLpng(id); });
+      d.querySelector('[data-f="svg"]').addEventListener('click',function(){ genDLsvg(id); });
+      gGrid.appendChild(d); }); }
+    function run(){ var q=gi.value.trim(); if(!q){ gi.focus(); return; } gs.textContent='Searching the catalog…'; gGrid.innerHTML='';
+      fetch(API+'/search?query='+encodeURIComponent(q)+'&limit=120').then(function(r){ return r.json(); })
+      .then(function(data){ var all=(data&&data.icons)||[]; if(!all.length){ gs.textContent='No icons found for “'+q+'”. Try a simpler or more common word (e.g. bank, home, key, chart).'; return; }
+        var line=all.filter(isLine), note='';
+        if(!line.length){ line=all.slice(0,24); note=' (closest matches)'; }
+        line=line.slice(0,48);
+        gs.textContent=line.length+' on-brand results for “'+q+'”'+note+' · hover a tile and click PNG or SVG.';
+        render(line); })
+      .catch(function(){ gs.textContent='Could not reach the icon catalog — check your connection and try again.'; }); }
+    gg.addEventListener('click',run);
+    gi.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); run(); } });
+  })();
 
   /* ---- story card maker (1080x1920) ---- */
   var BGS={
