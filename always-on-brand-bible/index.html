@@ -557,6 +557,14 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
   padding:8px 16px;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .18s}
 .iccat:hover{border-color:var(--gold-line);color:var(--ink)}
 .iccat.on{background:var(--gold);border-color:var(--gold);color:#141414}
+.icon-colors{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:0 0 20px}
+.icon-colors .lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--body);margin-right:4px}
+.iccolor{width:26px;height:26px;border-radius:50%;border:1px solid var(--line-2);cursor:pointer;padding:0;transition:transform .12s,box-shadow .12s}
+.iccolor:hover{transform:translateY(-1px)}
+.iccolor.on{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--gold)}
+.icon-grid.lightbg .ic{background:#f4f1ea;border-color:#e4ddcc}
+.icon-grid.lightbg .ic:hover{background:#efe9dc;border-color:var(--gold-line)}
+.icon-grid.lightbg .ic .icn{color:#5a5145}
 .icon-empty{color:var(--body);font-size:.9rem;padding:14px 2px}
 /* ---------- icon generator ---------- */
 .gen{margin-top:42px;padding-top:34px;border-top:1px solid var(--line)}
@@ -1403,6 +1411,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
       <input type="search" id="icon-input" placeholder="Search icons (apple, book, key, listings, instagram, growth...)" aria-label="Search icons">
     </div>
     <div class="icon-cats" id="icon-cats"></div>
+    <div class="icon-colors" id="icon-colors"></div>
     <div class="icon-grid" id="icon-grid"></div>
     <p class="icon-empty" id="icon-empty" style="display:none">No icons match that word yet &mdash; try the generator below, which searches 200,000+ icons.</p>
 
@@ -1751,10 +1760,14 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
   var ICON_CATS=[{k:'',n:'All'},{k:'social',n:'Social'},{k:'biz',n:'Real Estate &amp; Business'},{k:'object',n:'Everyday'}];
   var grid=document.getElementById('icon-grid'), input=document.getElementById('icon-input'), empty=document.getElementById('icon-empty'), chipsWrap=document.getElementById('icon-cats');
   var activeCat='';
-  function iconThumb(ic){ if(ic.f) return '<svg viewBox="0 0 24 24" fill="#c9a96e" stroke="none">'+ic.s+'</svg>'; return '<svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">'+ic.s+'</svg>'; }
-  function iconFull(ic,size){ if(ic.f) return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="'+size+'" height="'+size+'" fill="#c9a96e" stroke="none">'+ic.s+'</svg>'; return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="'+size+'" height="'+size+'" fill="none" stroke="#c9a96e" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">'+ic.s+'</svg>'; }
-  function iconDLsvg(ic){ dlSVG('icon-'+ic.n, iconFull(ic,96)); }
-  function iconDLpng(ic){ var svg=iconFull(ic,512), img=new Image(); img.onload=function(){ var c=document.createElement('canvas'); c.width=512; c.height=512; var x=c.getContext('2d'); x.drawImage(img,0,0,512,512); c.toBlob(function(bl){ if(bl){ dl('icon-'+ic.n+'.png',bl); toast('Downloaded icon-'+ic.n+'.png'); } else toast('PNG export failed'); },'image/png'); }; img.onerror=function(){ toast('PNG export failed'); }; img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); }
+  var ICON_COLORS=[{k:'#c9a96e',n:'gold'},{k:'#a8905c',n:'gold-dim'},{k:'#f4f1ea',n:'cream'},{k:'#ffffff',n:'white'},{k:'#141414',n:'near-black'}];
+  var iconColor='#c9a96e', genRerender=null;
+  function iconColorName(){ for(var i=0;i<ICON_COLORS.length;i++){ if(ICON_COLORS[i].k===iconColor) return ICON_COLORS[i].n; } return 'gold'; }
+  function iconBody(ic){ return ic.s.replace(/#c9a96e/g, iconColor); }
+  function iconThumb(ic){ if(ic.f) return '<svg viewBox="0 0 24 24" fill="'+iconColor+'" stroke="none">'+iconBody(ic)+'</svg>'; return '<svg viewBox="0 0 24 24" fill="none" stroke="'+iconColor+'" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">'+iconBody(ic)+'</svg>'; }
+  function iconFull(ic,size){ if(ic.f) return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="'+size+'" height="'+size+'" fill="'+iconColor+'" stroke="none">'+iconBody(ic)+'</svg>'; return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="'+size+'" height="'+size+'" fill="none" stroke="'+iconColor+'" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">'+iconBody(ic)+'</svg>'; }
+  function iconDLsvg(ic){ dlSVG('icon-'+ic.n+'-'+iconColorName(), iconFull(ic,96)); }
+  function iconDLpng(ic){ var svg=iconFull(ic,512), nm='icon-'+ic.n+'-'+iconColorName(), img=new Image(); img.onload=function(){ var c=document.createElement('canvas'); c.width=512; c.height=512; var x=c.getContext('2d'); x.drawImage(img,0,0,512,512); c.toBlob(function(bl){ if(bl){ dl(nm+'.png',bl); toast('Downloaded '+nm+'.png'); } else toast('PNG export failed'); },'image/png'); }; img.onerror=function(){ toast('PNG export failed'); }; img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); }
   function iconMatch(ic,q){ if(!q) return true; var hay=(ic.n+' '+(ic.k||'')).toLowerCase(); if(hay.indexOf(q)>=0) return true; var stem=q.replace(/(ies|es|s)$/,''); if(stem.length>=3 && hay.indexOf(stem)>=0) return true; return false; }
   function renderIcons(q){ if(!grid)return; q=(q||'').toLowerCase().trim(); grid.innerHTML=''; var n=0;
     ICONS.forEach(function(ic){ if(activeCat && ic.c!==activeCat) return; if(!iconMatch(ic,q)) return; n++;
@@ -1767,6 +1780,9 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     if(empty) empty.style.display = n ? 'none' : 'block';
   }
   if(chipsWrap){ ICON_CATS.forEach(function(cat){ var b=document.createElement('button'); b.type='button'; b.className='iccat'+(cat.k===activeCat?' on':''); b.innerHTML=cat.n; b.addEventListener('click',function(){ activeCat=cat.k; chipsWrap.querySelectorAll('.iccat').forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); renderIcons(input?input.value:''); }); chipsWrap.appendChild(b); }); }
+  var colorWrap=document.getElementById('icon-colors');
+  function iconLightBg(){ var dark=(iconColor==='#141414'); if(grid) grid.classList.toggle('lightbg',dark); var gg=document.getElementById('gen-grid'); if(gg) gg.classList.toggle('lightbg',dark); }
+  if(colorWrap){ var lbl=document.createElement('span'); lbl.className='lbl'; lbl.textContent='Color'; colorWrap.appendChild(lbl); ICON_COLORS.forEach(function(c){ var b=document.createElement('button'); b.type='button'; b.className='iccolor'+(c.k===iconColor?' on':''); b.style.background=c.k; b.title=c.n; b.addEventListener('click',function(){ iconColor=c.k; colorWrap.querySelectorAll('.iccolor').forEach(function(y){y.classList.remove('on');}); b.classList.add('on'); iconLightBg(); renderIcons(input?input.value:''); if(genRerender) genRerender(); }); colorWrap.appendChild(b); }); }
   renderIcons('');
   if(input) input.addEventListener('input',function(){ renderIcons(input.value); });
 
@@ -1778,11 +1794,13 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     var LINE_SETS=/^(lucide|tabler|hugeicons|mynaui|iconoir|ph|carbon|mingcute|basil|humbleicons|majesticons|garden|stash|gg|solar|material-symbols-light|mdi-light|ci|nrk|akar-icons|ph-bold)$/;
     var BAD=/(fill|filled|bold|solid|duotone|twotone|sharp)/i, GOOD=/(outline|linear|line|light|stroke|thin|regular)/i;
     function isLine(id){ if(BAD.test(id)) return false; if(GOOD.test(id)) return true; return LINE_SETS.test(id.split(':')[0]); }
-    function iconURL(id,size){ return API+'/'+id.replace(':','/')+'.svg?color=%23c9a96e&height='+(size||64); }
-    function safe(id){ return 'icon-'+id.replace(/[:\/]/g,'-'); }
+    var lastIds=[];
+    function iconURL(id,size){ return API+'/'+id.replace(':','/')+'.svg?color='+encodeURIComponent(iconColor)+'&height='+(size||64); }
+    function safe(id){ return 'icon-'+id.replace(/[:\/]/g,'-')+'-'+iconColorName(); }
     function genDLsvg(id){ fetch(iconURL(id,96)).then(function(r){return r.text();}).then(function(svg){ dlSVG(safe(id), svg); }).catch(function(){ toast('Download failed'); }); }
     function genDLpng(id){ var img=new Image(); img.crossOrigin='anonymous'; img.onload=function(){ var c=document.createElement('canvas'); c.width=512; c.height=512; var x=c.getContext('2d'); x.drawImage(img,0,0,512,512); try{ c.toBlob(function(bl){ if(bl){ dl(safe(id)+'.png',bl); toast('Downloaded PNG'); } else toast('PNG failed'); },'image/png'); }catch(e){ toast('PNG failed'); } }; img.onerror=function(){ toast('PNG failed'); }; img.src=iconURL(id,512); }
-    function render(ids){ gGrid.innerHTML=''; ids.forEach(function(id){ var name=id.split(':')[1]||id; var d=document.createElement('div'); d.className='ic';
+    genRerender=function(){ if(lastIds.length) render(lastIds); };
+    function render(ids){ lastIds=ids; gGrid.innerHTML=''; ids.forEach(function(id){ var name=id.split(':')[1]||id; var d=document.createElement('div'); d.className='ic';
       d.innerHTML='<img src="'+iconURL(id,64)+'" alt="'+name+'"><span class="icn">'+name+'</span><span class="icfmt"><button type="button" class="icf" data-f="png">PNG</button><button type="button" class="icf" data-f="svg">SVG</button></span>';
       d.querySelector('[data-f="png"]').addEventListener('click',function(){ genDLpng(id); });
       d.querySelector('[data-f="svg"]').addEventListener('click',function(){ genDLsvg(id); });
