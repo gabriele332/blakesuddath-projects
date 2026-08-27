@@ -594,6 +594,20 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 .cm-dl:hover{filter:brightness(1.06)}
 .cm-preview{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#0c0c0c}
 .cm-preview canvas{display:block;width:100%;height:auto}
+.cm-hint{font-family:var(--font-sans);font-size:9px;letter-spacing:.02em;text-transform:none;color:var(--gold-dim);margin-left:6px}
+.cm-sizes{display:flex;gap:8px;flex-wrap:wrap}
+.cm-sz{flex:1;min-width:96px;background:transparent;border:1px solid var(--line-2);color:var(--body);border-radius:8px;
+  padding:9px 6px;font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;cursor:pointer;transition:all .15s}
+.cm-sz:hover{border-color:var(--gold-line);color:var(--ink)}
+.cm-sz.on{background:var(--gold);border-color:var(--gold);color:#141414}
+.cm-photo-row{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.cm-photo-btn{flex:1;text-align:center;background:var(--surface);border:1px dashed var(--gold-line);color:var(--gold);
+  border-radius:9px;padding:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;cursor:pointer;transition:background .15s}
+.cm-photo-btn:hover{background:rgba(201,169,110,.08)}
+.cm-photo-clear{background:transparent;border:1px solid var(--line-2);color:var(--body);border-radius:9px;
+  padding:12px 14px;font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;cursor:pointer;white-space:nowrap}
+.cm-photo-clear:hover{border-color:var(--gold-line);color:var(--ink)}
+#cm-ov{width:100%;accent-color:var(--gold);margin-top:4px}
 
 /* ---------- photos ---------- */
 .photos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -1409,31 +1423,45 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     <div class="sec-head">
       <span class="sec-num">23</span>
       <div class="txt">
-        <p class="eyebrow">Video Toolkit</p>
-        <h2 class="sec-title">Story card maker</h2>
-        <p class="lead">Type your line, pick a brand background, and download a ready-to-use <strong>1080&times;1920</strong> PNG for Reels, Stories, and TikTok edits &mdash; the on-brand version of building quote cards in Canva. Every background comes from the Always-On palette.</p>
+        <p class="eyebrow">Content Toolkit</p>
+        <h2 class="sec-title">Post &amp; carousel maker</h2>
+        <p class="lead">Upload a photo of Blake working, type a line, and download a ready-to-post slide &mdash; a full-bleed photo with a dark overlay and your phrase centered, exactly like the carousels. Or use a brand background instead. Wrap a word in <strong>*asterisks*</strong> to emphasize it. Sizes for carousel posts, stories, and square.</p>
       </div>
     </div>
     <div class="cardmaker">
       <div class="cm-controls">
-        <label class="cm-lab" for="cm-text">Your text</label>
-        <textarea id="cm-text" class="cm-text" rows="3" spellcheck="false">Summer buyers are already asking AI who to call.</textarea>
+        <label class="cm-lab" for="cm-text">Your text <span class="cm-hint">wrap a word in *asterisks* to emphasize</span></label>
+        <textarea id="cm-text" class="cm-text" rows="3" spellcheck="false">Your *next client* is asking *AI* who to call.</textarea>
+
+        <label class="cm-lab">Size</label>
+        <div class="cm-sizes" id="cm-sizes">
+          <button type="button" class="cm-sz on" data-sz="post">Post 1080&times;1350</button>
+          <button type="button" class="cm-sz" data-sz="story">Story 1080&times;1920</button>
+          <button type="button" class="cm-sz" data-sz="square">Square 1080&times;1080</button>
+        </div>
+
         <label class="cm-lab">Background</label>
+        <div class="cm-photo-row">
+          <label class="cm-photo-btn">&plus; Upload photo<input type="file" id="cm-photo" accept="image/*" hidden></label>
+          <button type="button" id="cm-photo-clear" class="cm-photo-clear" style="display:none">Remove photo</button>
+        </div>
         <div class="cm-bgs" id="cm-bgs"></div>
-        <div class="cm-row">
-          <div class="cm-field">
-            <label class="cm-lab" for="cm-fs">Text size</label>
-            <input type="range" id="cm-fs" min="56" max="150" value="100">
-          </div>
+        <div class="cm-field" id="cm-ov-field" style="display:none">
+          <label class="cm-lab" for="cm-ov">Photo darkness</label>
+          <input type="range" id="cm-ov" min="0" max="78" value="44">
+        </div>
+
+        <div class="cm-field">
+          <label class="cm-lab" for="cm-fs">Text size</label>
+          <input type="range" id="cm-fs" min="40" max="120" value="66">
         </div>
         <div class="cm-opts">
-          <label class="cm-check"><input type="checkbox" id="cm-italic"> Italic serif accent</label>
-          <label class="cm-check"><input type="checkbox" id="cm-logo" checked> Show wordmark</label>
+          <label class="cm-check"><input type="checkbox" id="cm-logo"> Show wordmark</label>
         </div>
-        <button class="cm-dl" id="cm-dl" type="button">&darr; Download PNG &middot; 1080&times;1920</button>
+        <button class="cm-dl" id="cm-dl" type="button">&darr; Download PNG</button>
       </div>
       <div class="cm-preview">
-        <canvas id="cm-canvas" width="1080" height="1920"></canvas>
+        <canvas id="cm-canvas" width="1080" height="1350"></canvas>
       </div>
     </div>
   </section>
@@ -1787,23 +1815,36 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     white:{css:'#ffffff',dark:0,ink:'#141414',draw:function(x,W,H){x.fillStyle='#ffffff';x.fillRect(0,0,W,H);}}
   };
   var BG_ORDER=['void','carbon','glow','midnight','charcoal','gold','golddim','spectrum','cream','creamwarm','white'];
-  var cmBg='void', cmCanvas=document.getElementById('cm-canvas');
-  function cmWrap(x,text,maxW){ var words=text.split(/\s+/), lines=[], cur=''; words.forEach(function(w){ var t=cur?cur+' '+w:w; if(x.measureText(t).width>maxW && cur){ lines.push(cur); cur=w; } else cur=t; }); if(cur) lines.push(cur); return lines; }
-  function cmDraw(){ if(!cmCanvas) return; var x=cmCanvas.getContext('2d'), W=1080, H=1920, bg=BGS[cmBg]; bg.draw(x,W,H);
-    var elT=document.getElementById('cm-text'), elFs=document.getElementById('cm-fs'), elIt=document.getElementById('cm-italic'), elLg=document.getElementById('cm-logo');
-    var text=(elT.value||'').trim(); var fs=+elFs.value; var italic=elIt.checked; var showLogo=elLg.checked;
-    x.textAlign='center'; x.textBaseline='middle';
-    var accent = bg.dark ? '#c9a96e' : '#141414';
-    x.fillStyle = italic ? accent : bg.ink;
-    x.font = (italic?'italic 400 ':'700 ')+fs+'px '+(italic?"'Instrument Serif',Georgia,serif":"'Helvetica Neue',Helvetica,Arial,sans-serif");
-    var margin=130, maxW=W-margin*2, lines=cmWrap(x,text||' ',maxW), lh=fs*1.14, startY=H/2-(lines.length*lh)/2+lh/2;
-    lines.forEach(function(l,i){ x.fillText(l, W/2, startY+i*lh); });
-    if(showLogo){ x.font="600 42px 'Cormorant Garamond',Georgia,serif"; x.fillStyle=bg.dark?'#c9a96e':'#8a7238'; x.textBaseline='alphabetic'; x.fillText('blakesuddath.com', W/2, H-130); }
+  var CM_SIZES={post:[1080,1350],story:[1080,1920],square:[1080,1080]};
+  var cmBg='void', cmSize='post', cmPhoto=null, cmCanvas=document.getElementById('cm-canvas');
+  function cmFont(fs,b,i){ return (i?'italic ':'')+(b?'700':'400')+' '+fs+"px 'Helvetica Neue',Helvetica,Arial,sans-serif"; }
+  function cmStyled(text){ var runs=[],rx=/\*\*([^*]+)\*\*|\*([^*]+)\*/g,last=0,mm; while((mm=rx.exec(text))){ if(mm.index>last) runs.push({t:text.slice(last,mm.index),b:0,i:0}); if(mm[1]!==undefined) runs.push({t:mm[1],b:1,i:0}); else runs.push({t:mm[2],b:1,i:1}); last=rx.lastIndex; } if(last<text.length) runs.push({t:text.slice(last),b:0,i:0}); var out=[], first=true, pend=false; runs.forEach(function(r){ r.t.split(/(\s+)/).forEach(function(p){ if(p==='') return; if(/^\s+$/.test(p)){ pend=true; return; } out.push({t:p,b:r.b,i:r.i,sp:(first?false:pend)}); first=false; pend=false; }); }); return out; }
+  function cmDraw(){ if(!cmCanvas) return; var sz=CM_SIZES[cmSize],W=sz[0],H=sz[1]; if(cmCanvas.width!==W) cmCanvas.width=W; if(cmCanvas.height!==H) cmCanvas.height=H; var x=cmCanvas.getContext('2d'); var onPhoto=!!cmPhoto;
+    if(onPhoto){ var iw=cmPhoto.naturalWidth,ih=cmPhoto.naturalHeight,s=Math.max(W/iw,H/ih),dw=iw*s,dh=ih*s; x.drawImage(cmPhoto,(W-dw)/2,(H-dh)/2,dw,dh); var ov=(+document.getElementById('cm-ov').value)/100; if(ov>0){ x.fillStyle='rgba(0,0,0,'+ov+')'; x.fillRect(0,0,W,H); } }
+    else { BGS[cmBg].draw(x,W,H); }
+    var color = onPhoto ? '#ffffff' : (BGS[cmBg].dark?'#f4f1ea':'#141414');
+    var text=(document.getElementById('cm-text').value||'').trim(); var fs=+document.getElementById('cm-fs').value; var showLogo=document.getElementById('cm-logo').checked;
+    var words=cmStyled(text||' '), space=fs*0.3, margin=Math.round(W*0.11), maxW=W-margin*2;
+    x.textBaseline='alphabetic';
+    var lines=[],cur=[],curW=0;
+    words.forEach(function(w){ x.font=cmFont(fs,w.b,w.i); w._w=x.measureText(w.t).width; var gap=(cur.length&&w.sp)?space:0, add=gap+w._w; if(curW+add>maxW && cur.length){ lines.push(cur); cur=[]; curW=0; add=w._w; } cur.push(w); curW+=add; });
+    if(cur.length) lines.push(cur);
+    var lh=fs*1.2, totalH=lines.length*lh, top=H/2-totalH/2+lh*0.74;
+    lines.forEach(function(ln,li){ var lw=0; ln.forEach(function(w,wi){ lw+=((wi&&w.sp)?space:0)+w._w; }); var lx=(W-lw)/2, cy=top+li*lh;
+      ln.forEach(function(w,wi){ if(wi && w.sp) lx+=space; x.font=cmFont(fs,w.b,w.i); x.textAlign='left'; if(onPhoto){ x.shadowColor='rgba(0,0,0,0.55)'; x.shadowBlur=Math.round(fs*0.14); x.shadowOffsetY=2; } x.fillStyle=color; x.fillText(w.t,lx,cy); lx+=w._w; });
+    });
+    x.shadowColor='transparent'; x.shadowBlur=0; x.shadowOffsetY=0;
+    if(showLogo){ x.textAlign='center'; x.font="600 "+Math.round(W*0.039)+"px 'Cormorant Garamond',Georgia,serif"; x.fillStyle=onPhoto?'#ffffff':(BGS[cmBg].dark?'#c9a96e':'#8a7238'); if(onPhoto){ x.shadowColor='rgba(0,0,0,0.5)'; x.shadowBlur=8; } x.fillText('blakesuddath.com', W/2, H-Math.round(H*0.07)); x.shadowColor='transparent'; x.shadowBlur=0; }
   }
   var bgWrap=document.getElementById('cm-bgs');
-  if(bgWrap){ BG_ORDER.forEach(function(id){ var b=document.createElement('button'); b.type='button'; b.className='cm-bg'+(id===cmBg?' on':''); b.setAttribute('data-bg',id); b.style.background=BGS[id].css; b.title=id; b.addEventListener('click',function(){ cmBg=id; bgWrap.querySelectorAll('.cm-bg').forEach(function(y){y.classList.remove('on');}); b.classList.add('on'); cmDraw(); }); bgWrap.appendChild(b); }); }
-  ['cm-text','cm-fs','cm-italic','cm-logo'].forEach(function(id){ var e=document.getElementById(id); if(e){ e.addEventListener('input',cmDraw); e.addEventListener('change',cmDraw); } });
-  var cmDl=document.getElementById('cm-dl'); if(cmDl){ cmDl.addEventListener('click',function(){ cmDraw(); cmCanvas.toBlob(function(bl){ if(bl){ dl('story-card-1080x1920.png',bl); toast('Downloaded story card'); } else toast('Export failed'); },'image/png'); }); }
+  function cmClearPhoto(setSwatch){ cmPhoto=null; document.getElementById('cm-ov-field').style.display='none'; document.getElementById('cm-photo-clear').style.display='none'; if(setSwatch){ bgWrap.querySelectorAll('.cm-bg').forEach(function(y){y.classList.remove('on');}); var el=bgWrap.querySelector('.cm-bg[data-bg="'+cmBg+'"]'); if(el) el.classList.add('on'); } }
+  if(bgWrap){ BG_ORDER.forEach(function(id){ var b=document.createElement('button'); b.type='button'; b.className='cm-bg'+(id===cmBg?' on':''); b.setAttribute('data-bg',id); b.style.background=BGS[id].css; b.title=id; b.addEventListener('click',function(){ cmBg=id; cmClearPhoto(false); bgWrap.querySelectorAll('.cm-bg').forEach(function(y){y.classList.remove('on');}); b.classList.add('on'); cmDraw(); }); bgWrap.appendChild(b); }); }
+  document.querySelectorAll('#cm-sizes .cm-sz').forEach(function(b){ b.addEventListener('click',function(){ cmSize=b.getAttribute('data-sz'); document.querySelectorAll('#cm-sizes .cm-sz').forEach(function(y){y.classList.remove('on');}); b.classList.add('on'); cmDraw(); }); });
+  var photoInput=document.getElementById('cm-photo');
+  if(photoInput){ photoInput.addEventListener('change',function(){ var f=photoInput.files&&photoInput.files[0]; if(!f) return; var url=URL.createObjectURL(f); var img=new Image(); img.onload=function(){ cmPhoto=img; document.getElementById('cm-ov-field').style.display=''; document.getElementById('cm-photo-clear').style.display=''; bgWrap.querySelectorAll('.cm-bg').forEach(function(y){y.classList.remove('on');}); cmDraw(); }; img.onerror=function(){ toast('Could not read that image'); }; img.src=url; }); }
+  var photoClear=document.getElementById('cm-photo-clear'); if(photoClear){ photoClear.addEventListener('click',function(){ cmClearPhoto(true); cmDraw(); }); }
+  ['cm-text','cm-fs','cm-ov','cm-logo'].forEach(function(id){ var e=document.getElementById(id); if(e){ e.addEventListener('input',cmDraw); e.addEventListener('change',cmDraw); } });
+  var cmDl=document.getElementById('cm-dl'); if(cmDl){ cmDl.addEventListener('click',function(){ cmDraw(); var sz=CM_SIZES[cmSize]; cmCanvas.toBlob(function(bl){ if(bl){ dl('post-'+sz[0]+'x'+sz[1]+'.png',bl); toast('Downloaded '+sz[0]+'x'+sz[1]); } else toast('Export failed'); },'image/png'); }); }
   if(cmCanvas){ if(document.fonts && document.fonts.ready){ document.fonts.ready.then(cmDraw,cmDraw); } cmDraw(); }
 
   /* ---- email signature: upload photo, edit inline, copy ready HTML ---- */
