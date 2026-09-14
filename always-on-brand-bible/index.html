@@ -720,7 +720,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     <div class="nav-links">
       <a href="#guide">Blake</a><a href="#logo">Logo</a><a href="#mark">Mark</a><a href="#color">Color</a>
       <a href="#type">Type</a><a href="#ethos">Ethos</a><a href="#story">Story</a>
-      <a href="#offer">Offer</a><a href="#voice">Voice</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#signature">Email</a><a href="#never">Never</a>
+      <a href="#offer">Offer</a><a href="#voice">Voice</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#signature">Email</a><a href="#profiles">Profiles</a><a href="#never">Never</a>
     </div>
   </div>
 </nav>
@@ -1541,10 +1541,322 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     </div>
   </section>
 
+  <!-- PROFILE SETTINGS -->
+  <section class="blk" id="profiles">
+    <style>
+      #profiles .pf-levels{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+      @media(max-width:900px){#profiles .pf-levels{grid-template-columns:repeat(2,1fr)}}
+      @media(max-width:520px){#profiles .pf-levels{grid-template-columns:1fr}}
+      #profiles .pf-lv{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:18px 16px}
+      #profiles .pf-lv .n{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
+      #profiles .pf-lv h4{font-family:var(--font-sans);font-size:.95rem;color:var(--ink);margin:8px 0 6px;font-weight:600}
+      #profiles .pf-lv p{font-size:.84rem;color:var(--body);line-height:1.55}
+      #profiles .pf-who{display:flex;gap:8px;margin:34px 0 0;max-width:320px}
+      #profiles .pf-photo{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center;border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:26px}
+      @media(max-width:760px){#profiles .pf-photo{grid-template-columns:1fr}}
+      #profiles .pf-av{display:block;position:relative;width:240px;height:240px;margin:0 auto;border-radius:50%;overflow:hidden;border:1px solid var(--gold-line);cursor:pointer}
+      #profiles .pf-av canvas{width:100%;height:100%;display:block}
+      #profiles .pf-av .ph-hint{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.62);color:var(--ink);font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:9px 0 14px;opacity:0;transition:opacity .18s}
+      #profiles .pf-av:hover .ph-hint{opacity:1}
+      #profiles .pf-mini{display:flex;gap:14px;align-items:flex-end;justify-content:center;margin-top:16px}
+      #profiles .pf-mini canvas{border-radius:50%;display:block;border:1px solid var(--line-2)}
+      #profiles .pf-mini span{display:block;text-align:center;font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--gold-dim);margin-top:5px;text-transform:uppercase}
+      #profiles .pf-range{width:100%;accent-color:var(--gold)}
+      #profiles .pf-bios{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+      @media(max-width:760px){#profiles .pf-bios{grid-template-columns:1fr}}
+      #profiles .pf-bio{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:18px 18px 14px}
+      #profiles .pf-bio .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
+      #profiles .pf-bio .plat{font-family:var(--font-sans);font-weight:600;color:var(--ink);font-size:.95rem}
+      #profiles .pf-bio .fld{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim)}
+      #profiles .pf-bio .cm-text{font-size:.9rem;line-height:1.55;resize:vertical;min-height:0}
+      #profiles .pf-bio .pf-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+      #profiles .pf-bio .cnt{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--body)}
+      #profiles .pf-bio .cnt.over{color:#e07a6a}
+      #profiles .pf-bio .copybtn{margin-top:0;padding:7px 14px}
+      #profiles .pf-covers{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+      @media(max-width:760px){#profiles .pf-covers{grid-template-columns:1fr}}
+      #profiles .pf-cover{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px}
+      #profiles .pf-cover.wide{grid-column:1/-1}
+      #profiles .pf-cover canvas{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line)}
+      #profiles .pf-cover .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px}
+      #profiles .pf-hls{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+      @media(max-width:860px){#profiles .pf-hls{grid-template-columns:repeat(3,1fr)}}
+      #profiles .pf-hl{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:12px;display:flex;flex-direction:column;gap:9px;align-items:center}
+      #profiles .pf-hl canvas{width:100%;height:auto;display:block;border-radius:8px}
+      #profiles .pf-hl .cm-text{text-align:center;padding:7px 8px;font-size:.82rem}
+      #profiles .pf-hl .copybtn{margin-top:0;padding:6px 12px;font-size:11px}
+      #profiles .pf-actions{display:flex;justify-content:flex-end;margin:-4px 0 14px}
+      #profiles .pf-actions .copybtn{margin-top:0}
+    </style>
+
+    <div class="sec-head">
+      <span class="sec-num">25</span>
+      <div class="txt">
+        <p class="eyebrow">Social Profiles</p>
+        <h2 class="sec-title">Profile settings</h2>
+        <p class="lead">Every profile funnels into a Territory Takeover call. One headshot, one name format, one bio structure and one set of covers on every platform, for Blake and Tyler. Covers carry the <strong>Inner Cirql Coaching</strong> logo only: no photos, no headlines. Inner Cirql is the brand; the Always-On Agent System is a product under it.</p>
+      </div>
+    </div>
+
+    <p class="group-label" style="margin-top:0">The 5-level profile</p>
+    <p class="group-sub">Each level stacks on the one before it. A profile that hits all five is fully optimized.</p>
+    <div class="pf-levels">
+      <div class="pf-lv"><span class="n">Level 1</span><h4>Clean headshot</h4><p>Face clearly visible, tight crop, simple background. Same photo everywhere.</p></div>
+      <div class="pf-lv"><span class="n">Level 2</span><h4>First name + niche</h4><p>The name field is searchable: &ldquo;Blake | Team Recruiting Coach&rdquo;.</p></div>
+      <div class="pf-lv"><span class="n">Level 3</span><h4>Line 1: who you help</h4><p>Say exactly who: real estate team leaders and brokerage owners.</p></div>
+      <div class="pf-lv"><span class="n">Level 4</span><h4>Line 2: why trust you</h4><p>Results and proof, with real numbers.</p></div>
+      <div class="pf-lv"><span class="n">Level 5</span><h4>Last line: clear CTA</h4><p>One action that points at the link: theinnercirql.com.</p></div>
+    </div>
+
+    <div class="pf-who cm-sizes" role="tablist" aria-label="Choose profile">
+      <button type="button" class="cm-sz on" data-pf="blake" role="tab" aria-selected="true">Blake</button>
+      <button type="button" class="cm-sz" data-pf="tyler" role="tab" aria-selected="false">Tyler</button>
+    </div>
+
+    <p class="group-label">Profile photo</p>
+    <p class="group-sub">Click the photo to upload a headshot from the new shoot. It is placeholder art until then. Downloads at 1080&times;1080; every platform crops it to a circle.</p>
+    <div class="pf-photo">
+      <div>
+        <label class="pf-av" title="Click to change photo">
+          <canvas id="pf-avatar" width="1080" height="1080"></canvas>
+          <span class="ph-hint">Change photo</span>
+          <input type="file" accept="image/*" id="pf-file" hidden>
+        </label>
+        <div class="pf-mini">
+          <div><canvas id="pf-m1" width="112" height="112" style="width:56px;height:56px"></canvas><span>Feed</span></div>
+          <div><canvas id="pf-m2" width="64" height="64" style="width:32px;height:32px"></canvas><span>Comment</span></div>
+        </div>
+      </div>
+      <div>
+        <label class="cm-lab" for="pf-zoom">Zoom</label>
+        <input class="pf-range" type="range" id="pf-zoom" min="1" max="2.5" step="0.01" value="1">
+        <label class="cm-lab" for="pf-x">Left / right</label>
+        <input class="pf-range" type="range" id="pf-x" min="0" max="1" step="0.005" value="0.5">
+        <label class="cm-lab" for="pf-y">Up / down</label>
+        <input class="pf-range" type="range" id="pf-y" min="0" max="1" step="0.005" value="0.4">
+        <button class="cm-dl" id="pf-dl-avatar" type="button">&darr; Download profile photo (1080&times;1080)</button>
+        <ul class="rules">
+          <li>Check the Comment size: if the face is not obvious at 32px, zoom in.</li>
+          <li>Use the exact same file on every platform so people recognize it instantly.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="group-label">Names &amp; bios</p>
+    <p class="group-sub">Written to the 5 levels and each platform&rsquo;s character limit. Edit in place; the counter turns red past the limit. Link in bio on every platform: <strong>theinnercirql.com</strong>.</p>
+    <div class="pf-actions"><button type="button" class="copybtn" id="pf-reset">Reset this profile&rsquo;s copy</button></div>
+    <div class="pf-bios" id="pf-bios"></div>
+
+    <p class="group-label">Covers</p>
+    <p class="group-sub">Logo only, on the brand ground, at each platform&rsquo;s exact upload size. The logo sits in the center, clear of where each platform places the profile photo.</p>
+    <div class="pf-actions"><button type="button" class="copybtn" id="pf-dl-covers">&darr; Download all covers</button></div>
+    <div class="pf-covers" id="pf-covers"></div>
+
+    <p class="group-label">Instagram highlight covers</p>
+    <p class="group-sub">1080&times;1920. Instagram shows the center as a circle, so each icon sits inside it. Rename any label.</p>
+    <div class="pf-actions"><button type="button" class="copybtn" id="pf-dl-hls">&darr; Download all highlights</button></div>
+    <div class="pf-hls" id="pf-hls"></div>
+
+    <script>
+    (function(){
+      var GOLD='#c9a96e', INK='#f4f1ea', BG='#0f0f0f', SANS='"DM Sans","Helvetica Neue",Arial,sans-serif';
+      var ARCS=['M31 17A38 38 0 0 0 31 83','M39 31A22 22 0 0 0 39 69','M61 31A22 22 0 0 1 61 69','M69 17A38 38 0 0 1 69 83'];
+      var PEOPLE={
+        blake:{ first:'Blake', photo:'blake-profile.jpg', bios:[
+          {k:'ig-name',p:'Instagram',f:'Name',max:30,one:true,t:'Blake | Team Recruiting Coach'},
+          {k:'ig-bio',p:'Instagram',f:'Bio',max:150,t:'Helping real estate team leaders recruit 5 to 10 agents a month\n400+ agents recruited. 43 hired in one quarter\nBook your strategy call ↓'},
+          {k:'tt-name',p:'TikTok',f:'Name',max:30,one:true,t:'Blake | Team Recruiting Coach'},
+          {k:'tt-bio',p:'TikTok',f:'Bio',max:80,t:'Team leaders: recruit 5-10 agents a month\n400+ agents recruited\nBook a call ↓'},
+          {k:'th-bio',p:'Threads',f:'Bio (name syncs from Instagram)',max:150,t:'Helping real estate team leaders recruit 5 to 10 agents a month\n400+ agents recruited. 43 hired in one quarter\nBook your strategy call ↓'},
+          {k:'x-name',p:'X',f:'Display name',max:50,one:true,t:'Blake Suddath | Real Estate Recruiting Coach'},
+          {k:'x-bio',p:'X',f:'Bio',max:160,t:'I help real estate team leaders recruit 5 to 10 experienced agents a month. 400+ agents personally recruited, 43 in one quarter. Book a call ↓'},
+          {k:'li-head',p:'LinkedIn',f:'Headline (name stays legal name)',max:220,t:'Real Estate Recruiting Coach | I help team leaders and brokerage owners recruit 5 to 10 experienced agents a month | 400+ agents personally recruited | Territory Takeover System'},
+          {k:'li-about',p:'LinkedIn',f:'About',max:2600,t:'I help real estate team leaders and brokerage owners install proven recruiting systems that bring in 5 to 10 experienced agents a month, using our Territory Takeover System.\n\nI built it after personally recruiting 400+ agents since September 2019: 223 agents from August 2024 to July 2026, 115 full-time experienced agents hired in 2025, and 43 in a single quarter, one new recruit every 48 hours.\n\nNo more lying awake at night worried about company overhead. No more burning profit on agents who don\'t produce.\n\nBook a strategy call at theinnercirql.com'},
+          {k:'fb-intro',p:'Facebook',f:'Intro (no niche allowed in the name)',max:101,t:'Helping team leaders recruit 5-10 agents a month. 400+ agents recruited. Book a call ↓'},
+          {k:'yt-desc',p:'YouTube',f:'Channel description',max:1000,t:'I help real estate team leaders and brokerage owners recruit 5 to 10 experienced agents a month with the Territory Takeover System.\n\n400+ agents personally recruited since 2019. 43 experienced agents hired in a single quarter.\n\nBook a strategy call: theinnercirql.com'}
+        ]},
+        tyler:{ first:'Tyler', photo:'tyler-profile.jpg', bios:[
+          {k:'ig-name',p:'Instagram',f:'Name',max:30,one:true,t:'Tyler | Team Growth Systems'},
+          {k:'ig-bio',p:'Instagram',f:'Bio',max:150,t:'Installing recruiting + AI systems for real estate team leaders\nBuilt the tech stack for MN\'s #1 eXp team\nTake over your territory ↓'},
+          {k:'tt-name',p:'TikTok',f:'Name',max:30,one:true,t:'Tyler | Team Growth Systems'},
+          {k:'tt-bio',p:'TikTok',f:'Bio',max:80,t:'Recruiting + AI systems for RE teams\nTech lead, MN\'s #1 eXp team\nApply ↓'},
+          {k:'th-bio',p:'Threads',f:'Bio (name syncs from Instagram)',max:150,t:'Installing recruiting + AI systems for real estate team leaders\nBuilt the tech stack for MN\'s #1 eXp team\nTake over your territory ↓'},
+          {k:'x-name',p:'X',f:'Display name',max:50,one:true,t:'Tyler Lewis | Real Estate Growth Systems'},
+          {k:'x-bio',p:'X',f:'Bio',max:160,t:'I install recruiting and AI systems for real estate team leaders. Built the tech stack behind Minnesota\'s #1 eXp team. Apply below ↓'},
+          {k:'li-head',p:'LinkedIn',f:'Headline (name stays legal name)',max:220,t:'Growth Systems for Real Estate Team Leaders | Inner Cirql Coaching | Built the recruiting tech stack for Minnesota\'s #1 eXp team | AI and automation consultant'},
+          {k:'li-about',p:'LinkedIn',f:'About',max:2600,t:'I install the recruiting and growth systems behind the Territory Takeover System for real estate team leaders and brokerage owners.\n\nAs Director of Technology for Minnesota\'s #1 eXp team, I built their custom internal tech stack and implemented their recruiting systems alongside Blake Suddath. I\'ve worked in AI and automation since the ChatGPT beta group, before it was even called ChatGPT.\n\nApply for your market at theinnercirql.com'},
+          {k:'fb-intro',p:'Facebook',f:'Intro (no niche allowed in the name)',max:101,t:'Recruiting + AI systems for real estate team leaders. Tech lead behind MN\'s #1 eXp team. Apply ↓'},
+          {k:'yt-desc',p:'YouTube',f:'Channel description',max:1000,t:'Recruiting and AI systems for real estate team leaders and brokerage owners.\n\nBuilt the tech stack and recruiting systems behind Minnesota\'s #1 eXp team. Now installing the Territory Takeover System with Inner Cirql Coaching.\n\nApply for your market: theinnercirql.com'}
+        ]}
+      };
+      var COVERS=[
+        {id:'linkedin',t:'LinkedIn cover',w:1584,h:396,logoH:0.62,wide:true},
+        {id:'x',t:'X header',w:1500,h:500,logoH:0.56,wide:true},
+        {id:'facebook',t:'Facebook cover',w:1640,h:624,logoH:0.5},
+        {id:'youtube',t:'YouTube banner',w:2560,h:1440,logoH:0.2}
+      ];
+      var HLS=[['signal','The System'],['target','Territory'],['bars','Results'],['person','About'],['chat','Coaching'],['arrow','Apply']];
+
+      var KEY='bb-profile-settings-v1', S;
+      try{ S=JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ S={}; }
+      function save(){ try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){ note('Browser storage is full; the photo will not be kept after reload'); } }
+      function st(p){ S[p]=S[p]||{}; var s=S[p]; if(s.zoom==null){ s.zoom=1; s.x=0.5; s.y=0.4; } s.bios=s.bios||{}; s.hl=s.hl||{}; return s; }
+      var cur='blake', imgs={};
+      function $(id){ return document.getElementById(id); }
+      var tEl; function note(m){ if(!tEl){ tEl=document.createElement('div'); tEl.className='toast'; document.body.appendChild(tEl); } tEl.textContent=m; tEl.classList.add('show'); clearTimeout(note._t); note._t=setTimeout(function(){ tEl.classList.remove('show'); },1900); }
+      function dl(name,cv){ cv.toBlob(function(b){ if(!b){ note('Export failed'); return; } var a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=name+'.png'; document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },150); note('Downloaded '+name+'.png'); },'image/png'); }
+
+      function photo(p){
+        var src=st(p).photo||PEOPLE[p].photo;
+        if(imgs[p]&&imgs[p]._src===src) return Promise.resolve(imgs[p]);
+        return new Promise(function(res){ var i=new Image(); i.onload=function(){ i._src=src; imgs[p]=i; res(i); }; i.onerror=function(){ res(null); }; i.src=src; });
+      }
+      function cover(ctx,img,W,H,s){
+        ctx.fillStyle=BG; ctx.fillRect(0,0,W,H); if(!img) return;
+        var sc=Math.max(W/img.naturalWidth,H/img.naturalHeight)*s.zoom, dw=img.naturalWidth*sc, dh=img.naturalHeight*sc;
+        ctx.drawImage(img,(W-dw)*s.x,(H-dh)*s.y,dw,dh);
+      }
+      function drawAvatars(){
+        var s=st(cur);
+        return photo(cur).then(function(img){
+          [$('pf-avatar'),$('pf-m1'),$('pf-m2')].forEach(function(cv){ var c=cv.getContext('2d'); c.clearRect(0,0,cv.width,cv.height); cover(c,img,cv.width,cv.height,s); });
+        });
+      }
+
+      function spaced(c,txt,cx,y,ls){ var w=0,i; for(i=0;i<txt.length;i++) w+=c.measureText(txt[i]).width+ls; w-=ls; var x=cx-w/2; for(i=0;i<txt.length;i++){ c.fillText(txt[i],x,y); x+=c.measureText(txt[i]).width+ls; } }
+      function mark(c,cx,cy,size,color){ var k=size/100; c.save(); c.translate(cx-50*k,cy-50*k); c.scale(k,k); c.strokeStyle=color; c.fillStyle=color; c.lineWidth=6.5; c.lineCap='round'; ARCS.forEach(function(d){ c.stroke(new Path2D(d)); }); c.beginPath(); c.arc(50,50,6.5,0,Math.PI*2); c.fill(); c.restore(); }
+      /* Inner Cirql Coaching stacked lockup, drawn natively so it stays sharp at any cover size. h = total lockup height. */
+      function lockup(c,cx,cy,h){
+        var mk=h*0.44, name=h*0.2, sub=h*0.078, top=cy-h/2;
+        mark(c,cx,top+mk/2,mk,GOLD);
+        c.textBaseline='alphabetic'; c.textAlign='left';
+        c.fillStyle='#ffffff'; c.font='700 '+name+'px '+SANS; spaced(c,'INNER CIRQL',cx,top+mk+h*0.08+name*0.8,name*0.3);
+        c.fillStyle=GOLD; c.font='700 '+sub+'px '+SANS; spaced(c,'COACHING',cx,top+h,sub*0.55);
+      }
+      function ground(c,W,H){
+        c.fillStyle=BG; c.fillRect(0,0,W,H);
+        var g=c.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*0.55);
+        g.addColorStop(0,'rgba(201,169,110,0.14)'); g.addColorStop(1,'rgba(201,169,110,0)');
+        c.fillStyle=g; c.fillRect(0,0,W,H);
+      }
+      function drawCover(def,cv){ cv.width=def.w; cv.height=def.h; var c=cv.getContext('2d'); ground(c,def.w,def.h); lockup(c,def.w/2,def.h/2,def.h*def.logoH); }
+
+      var ICON={
+        signal:function(c){ ARCS.forEach(function(d){ c.stroke(new Path2D(d)); }); c.beginPath(); c.arc(50,50,6.5,0,Math.PI*2); c.fill(); },
+        target:function(c){ c.beginPath(); c.arc(50,50,32,0,Math.PI*2); c.stroke(); c.beginPath(); c.arc(50,50,12,0,Math.PI*2); c.fill(); },
+        bars:function(c){ [[22,58,14,24],[43,42,14,40],[64,24,14,58]].forEach(function(b){ c.fillRect(b[0],b[1],b[2],b[3]); }); },
+        person:function(c){ c.beginPath(); c.arc(50,36,14,0,Math.PI*2); c.stroke(); c.beginPath(); c.arc(50,86,28,Math.PI*1.08,Math.PI*1.92); c.stroke(); },
+        chat:function(c){ c.stroke(new Path2D('M22 28h56a6 6 0 0 1 6 6v28a6 6 0 0 1-6 6H44l-14 12V68h-8a6 6 0 0 1-6-6V34a6 6 0 0 1 6-6z')); },
+        arrow:function(c){ c.stroke(new Path2D('M26 50h46 M54 32l18 18-18 18')); }
+      };
+      function drawHl(icon,label,cv){
+        var W=1080,H=1920; cv.width=W; cv.height=H; var c=cv.getContext('2d'); ground(c,W,H);
+        c.lineWidth=10; c.strokeStyle='rgba(201,169,110,0.55)'; c.beginPath(); c.arc(W/2,H/2,330,0,Math.PI*2); c.stroke();
+        c.save(); c.translate(W/2-190,H/2-190); c.scale(3.8,3.8); c.strokeStyle=GOLD; c.fillStyle=GOLD; c.lineWidth=6.5; c.lineCap='round'; c.lineJoin='round'; (ICON[icon]||ICON.signal)(c); c.restore();
+        c.fillStyle='#ffffff'; c.font='700 62px '+SANS; c.textBaseline='alphabetic'; spaced(c,label.toUpperCase(),W/2,H/2+470,14);
+      }
+
+      function text(b){ var s=st(cur); return s.bios[b.k]!=null?s.bios[b.k]:b.t; }
+      function buildBios(){
+        var g=$('pf-bios'); g.innerHTML='';
+        PEOPLE[cur].bios.forEach(function(b){
+          var card=document.createElement('div'); card.className='pf-bio';
+          var top=document.createElement('div'); top.className='top';
+          var pl=document.createElement('span'); pl.className='plat'; pl.textContent=b.p;
+          var fl=document.createElement('span'); fl.className='fld'; fl.textContent=b.f;
+          top.appendChild(pl); top.appendChild(fl);
+          var ta=document.createElement(b.one?'input':'textarea'); ta.className='cm-text'; ta.value=text(b); ta.spellcheck=false;
+          if(!b.one) ta.rows=b.max>300?7:3;
+          var ft=document.createElement('div'); ft.className='pf-foot';
+          var cn=document.createElement('span'); cn.className='cnt';
+          var cp=document.createElement('button'); cp.type='button'; cp.className='copybtn'; cp.textContent='Copy';
+          ft.appendChild(cn); ft.appendChild(cp);
+          function count(){ var n=Array.from(ta.value).length; cn.textContent=n+' / '+b.max; cn.classList.toggle('over',n>b.max); }
+          ta.addEventListener('input',function(){ st(cur).bios[b.k]=ta.value; save(); count(); });
+          cp.addEventListener('click',function(){
+            function ok(){ note(b.p+' '+b.f.split(' (')[0].toLowerCase()+' copied'); }
+            function fb(){ ta.select(); try{ document.execCommand('copy'); ok(); }catch(e){ note('Copy failed; select manually'); } }
+            if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(ok,fb); else fb();
+          });
+          count();
+          card.appendChild(top); card.appendChild(ta); card.appendChild(ft); g.appendChild(card);
+        });
+      }
+
+      var coverCvs=[];
+      function buildCovers(){
+        var g=$('pf-covers'); g.innerHTML=''; coverCvs=[];
+        COVERS.forEach(function(def){
+          var card=document.createElement('div'); card.className='pf-cover'+(def.wide?' wide':'');
+          var top=document.createElement('div'); top.className='top';
+          var lb=document.createElement('span'); lb.className='dl-label'; lb.textContent=def.t+' · '+def.w+'×'+def.h;
+          var bt=document.createElement('button'); bt.type='button'; bt.className='copybtn'; bt.style.marginTop='0'; bt.textContent='↓ PNG';
+          var cv=document.createElement('canvas'); cv.setAttribute('aria-label',def.t+' preview');
+          drawCover(def,cv); coverCvs.push({def:def,cv:cv});
+          bt.addEventListener('click',function(){ drawCover(def,cv); dl('inner-cirql-'+def.id+'-cover',cv); });
+          top.appendChild(lb); top.appendChild(bt); card.appendChild(top); card.appendChild(cv); g.appendChild(card);
+        });
+      }
+
+      var hlCvs=[];
+      function buildHls(){
+        var g=$('pf-hls'); g.innerHTML=''; hlCvs=[];
+        HLS.forEach(function(h,i){
+          var s=st(cur), label=s.hl[i]!=null?s.hl[i]:h[1];
+          var card=document.createElement('div'); card.className='pf-hl';
+          var cv=document.createElement('canvas');
+          var inp=document.createElement('input'); inp.className='cm-text'; inp.value=label; inp.setAttribute('aria-label','Highlight label '+(i+1));
+          var bt=document.createElement('button'); bt.type='button'; bt.className='copybtn'; bt.textContent='↓ PNG';
+          var item={icon:h[0],label:label,cv:cv};
+          drawHl(item.icon,item.label,cv); hlCvs.push(item);
+          inp.addEventListener('input',function(){ item.label=inp.value; st(cur).hl[i]=inp.value; save(); drawHl(item.icon,item.label,cv); });
+          bt.addEventListener('click',function(){ dl(cur+'-highlight-'+(item.label||'cover').toLowerCase().replace(/[^a-z0-9]+/g,'-'),cv); });
+          card.appendChild(cv); card.appendChild(inp); card.appendChild(bt); g.appendChild(card);
+        });
+      }
+
+      function syncControls(){ var s=st(cur); $('pf-zoom').value=s.zoom; $('pf-x').value=s.x; $('pf-y').value=s.y; }
+      function renderPerson(){ syncControls(); buildBios(); buildHls(); return drawAvatars(); }
+
+      document.querySelectorAll('#profiles [data-pf]').forEach(function(b){
+        b.addEventListener('click',function(){
+          cur=b.getAttribute('data-pf');
+          document.querySelectorAll('#profiles [data-pf]').forEach(function(x){ var on=x===b; x.classList.toggle('on',on); x.setAttribute('aria-selected',String(on)); });
+          renderPerson();
+        });
+      });
+      ['pf-zoom','pf-x','pf-y'].forEach(function(id){
+        $(id).addEventListener('input',function(){ var s=st(cur), v=parseFloat(this.value); if(id==='pf-zoom') s.zoom=v; else if(id==='pf-x') s.x=v; else s.y=v; drawAvatars(); });
+        $(id).addEventListener('change',save);
+      });
+      $('pf-file').addEventListener('change',function(){
+        var f=this.files&&this.files[0]; this.value=''; if(!f) return;
+        var url=URL.createObjectURL(f), img=new Image();
+        img.onload=function(){
+          var m=1400, k=Math.min(1,m/Math.max(img.naturalWidth,img.naturalHeight)), c=document.createElement('canvas');
+          c.width=Math.round(img.naturalWidth*k); c.height=Math.round(img.naturalHeight*k);
+          var x=c.getContext('2d'); x.imageSmoothingQuality='high'; x.drawImage(img,0,0,c.width,c.height); URL.revokeObjectURL(url);
+          var s=st(cur); s.photo=c.toDataURL('image/jpeg',0.88); s.zoom=1; s.x=0.5; s.y=0.4; save(); syncControls(); drawAvatars().then(function(){ note(PEOPLE[cur].first+'’s photo added'); });
+        };
+        img.onerror=function(){ URL.revokeObjectURL(url); note('Could not read that image'); };
+        img.src=url;
+      });
+      $('pf-dl-avatar').addEventListener('click',function(){ var s=st(cur); photo(cur).then(function(img){ var cv=document.createElement('canvas'); cv.width=cv.height=1080; cover(cv.getContext('2d'),img,1080,1080,s); dl(cur+'-profile-photo',cv); }); });
+      $('pf-reset').addEventListener('click',function(){ st(cur).bios={}; save(); buildBios(); note(PEOPLE[cur].first+'’s copy reset'); });
+      function stagger(list,fn){ list.forEach(function(it,i){ setTimeout(function(){ fn(it); },i*450); }); }
+      $('pf-dl-covers').addEventListener('click',function(){ stagger(coverCvs,function(it){ drawCover(it.def,it.cv); dl('inner-cirql-'+it.def.id+'-cover',it.cv); }); });
+      $('pf-dl-hls').addEventListener('click',function(){ stagger(hlCvs,function(it){ dl(cur+'-highlight-'+(it.label||'cover').toLowerCase().replace(/[^a-z0-9]+/g,'-'),it.cv); }); });
+
+      function start(){ buildCovers(); renderPerson(); }
+      if(document.fonts&&document.fonts.load){ Promise.all([document.fonts.load('700 40px "DM Sans"'),document.fonts.ready]).then(start,start); } else start();
+    })();
+    </script>
+  </section>
+
   <!-- REBRAND NOTE -->
   <section class="blk">
     <div class="sec-head">
-      <span class="sec-num">25</span>
+      <span class="sec-num">26</span>
       <div class="txt">
         <p class="eyebrow">For The Team</p>
         <h2 class="sec-title">What changed in this edition</h2>
