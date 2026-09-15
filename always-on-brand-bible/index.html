@@ -1849,6 +1849,23 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 
       function start(){ buildCovers(); renderPerson(); }
       if(document.fonts&&document.fonts.load){ Promise.all([document.fonts.load('700 40px "DM Sans"'),document.fonts.ready]).then(start,start); } else start();
+      /* keep hash target aligned: content above loads late (lazy images, icon library) and pushes the section down after the browser's initial jump */
+      (function(){
+        var id=decodeURIComponent(location.hash.slice(1)); if(!id) return;
+        var target=document.getElementById(id); if(!target) return;
+        var userMoved=false, root=document.documentElement;
+        ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){ window.addEventListener(ev,function(){ userMoved=true; },{passive:true,once:true}); });
+        function align(){
+          if(userMoved) return;
+          var y=Math.round(target.getBoundingClientRect().top+window.pageYOffset);
+          if(Math.abs(window.pageYOffset-y)<=2) return;
+          var prev=root.style.scrollBehavior; root.style.scrollBehavior='auto'; window.scrollTo(0,y); root.style.scrollBehavior=prev;
+        }
+        var ro=('ResizeObserver' in window)?new ResizeObserver(align):null; if(ro) ro.observe(document.body);
+        window.addEventListener('load',align);
+        [0,150,500,1200,2500,4000].forEach(function(t){ setTimeout(align,t); });
+        setTimeout(function(){ if(ro) ro.disconnect(); },9000);
+      })();
     })();
     </script>
   </section>
