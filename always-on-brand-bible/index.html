@@ -70,8 +70,8 @@ strong{color:var(--ink);font-weight:600}
   background:rgba(15,15,15,0.82);backdrop-filter:blur(18px) saturate(1.3);
   border:1px solid var(--line-2);box-shadow:0 12px 34px rgba(0,0,0,0.45)}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-brand .wm{font-family:var(--font-serif);font-weight:600;font-size:1.05rem;color:var(--ink);
-  letter-spacing:.01em}
+.nav-brand .wm{font-family:var(--font-lockup);font-weight:700;font-size:.8rem;color:var(--ink);
+  letter-spacing:.28em;white-space:nowrap}
 .nav-links{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
 .nav-links a{font-size:12.5px;letter-spacing:.04em;color:var(--body);text-decoration:none;
   text-transform:uppercase;transition:color .2s}
@@ -148,7 +148,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 .spec .cap{position:absolute;bottom:10px;left:12px;font-family:var(--font-mono);font-size:9.5px;
   letter-spacing:.12em;text-transform:uppercase;color:var(--body)}
 .spec.on-gold .cap,.spec.on-cream .cap{color:rgba(15,15,15,.55)}
-.wm-lg{font-family:var(--font-serif);font-weight:600;font-size:1.4rem;color:var(--ink);letter-spacing:.01em}
+.wm-lg{font-family:var(--font-lockup);font-weight:700;font-size:1.02rem;color:var(--ink);letter-spacing:.28em;white-space:nowrap}
 .spec.on-gold .wm-lg,.spec.on-gold .lockup-txt,.spec.on-cream .wm-lg{color:#141414}
 .lockup{display:flex;align-items:center;gap:12px}
 .lockup-txt{font-family:var(--font-lockup);font-weight:700;font-size:1.05rem;color:var(--white);
@@ -374,7 +374,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 
 /* footer */
 .foot{border-top:1px solid var(--line);padding:60px 28px;text-align:center}
-.foot .wm{font-family:var(--font-serif);font-weight:600;font-size:1.3rem;color:var(--ink)}
+.foot .wm{font-family:var(--font-lockup);font-weight:700;font-size:1rem;letter-spacing:.28em;color:var(--ink)}
 .foot .t{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:14px}
 .foot .meta{font-family:var(--font-mono);font-size:11px;color:var(--body);margin-top:18px;letter-spacing:.08em}
 
@@ -405,7 +405,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 .sig .st{font-size:.82rem;color:var(--body)}
 .sig .sc{font-size:.78rem;color:var(--body);margin-top:7px;line-height:1.7}
 .sig .sdiv{height:1px;background:var(--gold-line);margin:13px 0}
-.sig .swm{font-family:var(--font-serif);color:var(--gold);font-size:.98rem}
+.sig .swm{font-family:var(--font-lockup);font-weight:700;letter-spacing:.28em;color:var(--gold);font-size:.78rem}
 .sig .stag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-top:5px}
 /* functional photo upload + editable fields */
 .sig .ph.phup{cursor:pointer;overflow:hidden;position:relative;padding:0}
@@ -479,7 +479,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 .cblock{border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .cblock .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line)}
 .cblock .bnav{display:flex;gap:14px;font-size:10px;letter-spacing:.06em}
-.cblock .bwm{font-family:var(--font-serif);font-weight:600;font-size:.95rem}
+.cblock .bwm{font-family:var(--font-lockup);font-weight:700;font-size:.72rem;letter-spacing:.28em}
 .cblock .cbody{padding:32px 24px 36px}
 .cblock .elab{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 .cblock .eh{font-weight:700;letter-spacing:-.03em;font-size:1.35rem;line-height:1.12;margin-bottom:10px}
@@ -524,7 +524,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 .frame .fh{font-weight:700;letter-spacing:-.03em;line-height:1.08;color:var(--white);font-size:clamp(1rem,2.6vw,1.6rem)}
 .frame .fh em{font-family:var(--font-accent);font-style:italic;font-weight:400;color:var(--gold)}
 .frame .fsub{font-size:.72rem;color:var(--body);margin-top:8px}
-.frame .fwm{position:absolute;bottom:14px;left:18px;font-family:var(--font-serif);font-size:.82rem;color:var(--gold)}
+.frame .fwm{position:absolute;bottom:14px;left:18px;font-family:var(--font-lockup);font-weight:700;font-size:.62rem;letter-spacing:.28em;color:var(--gold)}
 .frame .fstat{font-size:clamp(2rem,8vw,3.6rem);font-weight:700;color:var(--white);letter-spacing:-.03em;line-height:1}
 .frame.cream{background:var(--ink)}
 .frame.cream .fh{color:#141414}.frame.cream .fwm{color:#8a7238}.frame.cream .fsub{color:#4a4a4a}.frame.cream .fstat{color:#141414}
@@ -715,7 +715,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
         <circle class="c" cx="50" cy="50" r="6.5"/>
         <path class="p" d="M61 31A22 22 0 0 1 61 69"/><path class="p" d="M69 17A38 38 0 0 1 69 83"/>
       </svg>
-      <span class="wm">blakesuddath.com</span>
+      <span class="wm">BLAKE SUDDATH</span>
     </a>
     <div class="nav-links">
       <a href="#guide">Blake</a><a href="#logo">Logo</a><a href="#mark">Mark</a><a href="#color">Color</a>
@@ -783,28 +783,28 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 
     <div class="logo-groups">
       <p class="group-label">Blake &middot; Personal Brand</p>
-      <p class="group-sub">Blake&rsquo;s personal identity: the gold arc mark paired with the <strong>blakesuddath.com</strong> wordmark in Cormorant Garamond.</p>
+      <p class="group-sub">Blake&rsquo;s personal identity: the gold arc mark paired with the <strong>BLAKE SUDDATH</strong> wordmark in DM Sans Bold, all caps, tracked .28em, built exactly like the Inner Cirql primary lockup.</p>
       <div class="spec-grid">
         <div class="spec on-dark">
           <div class="lockup">
             <svg width="34" height="34" viewBox="0 0 100 100" class="mk"><path class="p" d="M31 17A38 38 0 0 0 31 83"/><path class="p" d="M39 31A22 22 0 0 0 39 69"/><circle class="c" cx="50" cy="50" r="6.5"/><path class="p" d="M61 31A22 22 0 0 1 61 69"/><path class="p" d="M69 17A38 38 0 0 1 69 83"/></svg>
-            <span class="wm-lg">blakesuddath.com</span>
+            <span class="wm-lg">BLAKE SUDDATH</span>
           </div>
           <span class="cap">Primary &middot; horizontal</span>
         </div>
         <div class="spec on-dark">
           <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
             <svg width="48" height="48" viewBox="0 0 100 100" class="mk"><path class="p" d="M31 17A38 38 0 0 0 31 83"/><path class="p" d="M39 31A22 22 0 0 0 39 69"/><circle class="c" cx="50" cy="50" r="6.5"/><path class="p" d="M61 31A22 22 0 0 1 61 69"/><path class="p" d="M69 17A38 38 0 0 1 69 83"/></svg>
-            <span class="wm-lg" style="font-size:1.05rem">blakesuddath.com</span>
+            <span class="wm-lg" style="font-size:.8rem">BLAKE SUDDATH</span>
           </div>
           <span class="cap">Stacked</span>
         </div>
         <div class="spec on-dark">
-          <span class="wm-lg">blakesuddath.com</span>
+          <span class="wm-lg">BLAKE SUDDATH</span>
           <span class="cap">Wordmark only</span>
         </div>
         <div class="spec on-gold">
-          <div class="lockup"><svg width="30" height="30" viewBox="0 0 100 100" class="mk"><path class="p" d="M31 17A38 38 0 0 0 31 83"/><path class="p" d="M39 31A22 22 0 0 0 39 69"/><circle class="c" cx="50" cy="50" r="6.5"/><path class="p" d="M61 31A22 22 0 0 1 61 69"/><path class="p" d="M69 17A38 38 0 0 1 69 83"/></svg><span class="wm-lg" style="font-size:1.1rem">blakesuddath.com</span></div>
+          <div class="lockup"><svg width="30" height="30" viewBox="0 0 100 100" class="mk"><path class="p" d="M31 17A38 38 0 0 0 31 83"/><path class="p" d="M39 31A22 22 0 0 0 39 69"/><circle class="c" cx="50" cy="50" r="6.5"/><path class="p" d="M61 31A22 22 0 0 1 61 69"/><path class="p" d="M69 17A38 38 0 0 1 69 83"/></svg><span class="wm-lg" style="font-size:.85rem">BLAKE SUDDATH</span></div>
           <span class="cap">On gold</span>
         </div>
         <div class="spec on-cream">
@@ -855,7 +855,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
         <div class="cvar"><div class="stage g-cream"><span class="mkslot" data-c="#141414"></span></div><div class="info"><span class="cname">Near-Black</span><span class="chex">#141414</span><span class="fmts"><button class="fmt" data-logo="mark" data-color="#141414" data-name="always-on-mark-black" data-fmt="png">PNG</button><button class="fmt" data-logo="mark" data-color="#141414" data-name="always-on-mark-black" data-fmt="svg">SVG</button></span></div></div>
       </div>
 
-      <p class="sub-label">Full logo &mdash; blakesuddath.com &middot; monochrome</p>
+      <p class="sub-label">Full logo &mdash; BLAKE SUDDATH &middot; monochrome</p>
       <div class="lvar-grid">
         <div class="lvar"><div class="stage g-dark"><span class="lkslot" data-c="#c9a96e"></span></div><div class="info"><span class="cname">Gold</span><span class="fmts"><button class="fmt" data-logo="primary-mono" data-color="#c9a96e" data-name="blakesuddath-logo-gold" data-fmt="png">PNG</button><button class="fmt" data-logo="primary-mono" data-color="#c9a96e" data-name="blakesuddath-logo-gold" data-fmt="svg">SVG</button></span></div></div>
         <div class="lvar"><div class="stage g-dark"><span class="lkslot" data-c="#a8905c"></span></div><div class="info"><span class="cname">Gold Dim</span><span class="fmts"><button class="fmt" data-logo="primary-mono" data-color="#a8905c" data-name="blakesuddath-logo-gold-dim" data-fmt="png">PNG</button><button class="fmt" data-logo="primary-mono" data-color="#a8905c" data-name="blakesuddath-logo-gold-dim" data-fmt="svg">SVG</button></span></div></div>
@@ -876,7 +876,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     </div>
 
     <ul class="rules">
-      <li><strong>Cormorant Garamond</strong> is used exclusively for the wordmark. Never for headlines, body, or anything else.</li>
+      <li>The <strong>BLAKE SUDDATH</strong> wordmark is <strong>DM Sans Bold</strong>, all caps, tracked <strong>.28em</strong>, exactly like the Inner Cirql primary lockup. Never lowercase, never a serif, never the old blakesuddath.com wordmark.</li>
       <li>The arc mark always sits to the <strong>left</strong> of the wordmark, optically centered, with clear space equal to the height of the center dot on every side.</li>
       <li>The system lockup pairs <strong>DM Sans</strong> (&ldquo;The Always-On&rdquo;) with <strong>Instrument Serif italic</strong> in gold (&ldquo;Agent System&rdquo;). Never set both words in the same face.</li>
       <li>Never distort, rotate, or recolor the mark outside the gold palette. On gold or cream grounds the mark and wordmark go near-black <strong>#141414</strong>.</li>
@@ -1249,7 +1249,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     </div>
     <div class="cblocks">
       <div class="cblock dark">
-        <div class="bar"><span class="bwm">blakesuddath.com</span><span class="bnav">Home&nbsp;&middot;&nbsp;System&nbsp;&middot;&nbsp;Blog&nbsp;&middot;&nbsp;Contact</span></div>
+        <div class="bar"><span class="bwm">BLAKE SUDDATH</span><span class="bnav">Home&nbsp;&middot;&nbsp;System&nbsp;&middot;&nbsp;Blog&nbsp;&middot;&nbsp;Contact</span></div>
         <div class="cbody">
           <div class="elab">Done-For-You AI Systems For Real Estate</div>
           <div class="eh">You&rsquo;re not losing to better agents. You&rsquo;re losing to better <span class="serif-i">systems.</span></div>
@@ -1259,7 +1259,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
         </div>
       </div>
       <div class="cblock cream">
-        <div class="bar"><span class="bwm">blakesuddath.com</span><span class="bnav">Home&nbsp;&middot;&nbsp;System&nbsp;&middot;&nbsp;Blog&nbsp;&middot;&nbsp;Contact</span></div>
+        <div class="bar"><span class="bwm">BLAKE SUDDATH</span><span class="bnav">Home&nbsp;&middot;&nbsp;System&nbsp;&middot;&nbsp;Blog&nbsp;&middot;&nbsp;Contact</span></div>
         <div class="cbody">
           <div class="elab" style="color:#8a7238">Done-For-You AI Systems For Real Estate</div>
           <div class="eh">You&rsquo;re not losing to better agents. You&rsquo;re losing to better <span class="serif-i">systems.</span></div>
@@ -1349,7 +1349,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
           <div class="flab">Done-For-You AI Systems</div>
           <div class="fh">The Real Estate Agent&rsquo;s Complete <em>AI Stack</em> for 2026</div>
           <div class="fsub">The five systems that replace cold calling, manual follow-up, and guessing what to post.</div>
-          <div class="fwm">blakesuddath.com</div>
+          <div class="fwm">BLAKE SUDDATH</div>
         </div>
         <div class="gcap">Blog header / OG image &middot; 1200 &times; 630</div>
       </div>
@@ -1371,7 +1371,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
           <span class="corner tl"></span><span class="corner tr"></span>
           <div class="flab">New On The Blog</div>
           <div class="fh" style="font-size:1.1rem">Your CRM Should Close Deals <em>While You Sleep</em></div>
-          <div class="fwm">blakesuddath.com</div>
+          <div class="fwm">BLAKE SUDDATH</div>
         </div>
         <div class="gcap">Story / Short &middot; 1080 &times; 1920</div>
       </div>
@@ -1381,7 +1381,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
           <div class="flab" style="color:#8a7238">Results</div>
           <div class="fstat">400+</div>
           <div class="fsub">agents recruited. The system works.</div>
-          <div class="fwm">blakesuddath.com</div>
+          <div class="fwm">BLAKE SUDDATH</div>
         </div>
         <div class="gcap">Story / Stat highlight &middot; 1080 &times; 1920</div>
       </div>
@@ -1390,7 +1390,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
           <span class="corner tl"></span><span class="corner tr"></span>
           <div class="fh" style="font-size:1.15rem">I Replaced Cold Calling With <em>This AI System</em></div>
           <div class="fsub">What happened after 90 days.</div>
-          <div class="fwm">blakesuddath.com</div>
+          <div class="fwm">BLAKE SUDDATH</div>
         </div>
         <div class="gcap">YouTube thumbnail &middot; 1280 &times; 720</div>
       </div>
@@ -1515,7 +1515,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
           <div class="st" contenteditable="true" spellcheck="false">Founder | Coach, Inner Cirql Coaching</div>
           <div class="sc"><span class="sphone" contenteditable="true" spellcheck="false">651.497.5624</span><br><span class="semail" contenteditable="true" spellcheck="false">Blake@Soldwithsuddath.com</span></div>
           <div class="sdiv"></div>
-          <div class="swm" contenteditable="true" spellcheck="false">blakesuddath.com</div>
+          <div class="swm" contenteditable="true" spellcheck="false">BLAKE SUDDATH</div>
           <div class="stag" contenteditable="true" spellcheck="false">Stop Chasing. Start Building.</div>
           <button class="copybtn" data-sig="blake" type="button">Copy HTML code</button>
         </div>
@@ -1532,7 +1532,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
           <div class="st" contenteditable="true" spellcheck="false">[Title], BlakeSuddath.com</div>
           <div class="sc"><span class="sphone" contenteditable="true" spellcheck="false">[Phone]</span><br><span class="semail" contenteditable="true" spellcheck="false">[Email]</span></div>
           <div class="sdiv"></div>
-          <div class="swm" contenteditable="true" spellcheck="false">blakesuddath.com</div>
+          <div class="swm" contenteditable="true" spellcheck="false">BLAKE SUDDATH</div>
           <div class="stag" contenteditable="true" spellcheck="false">Stop Chasing. Start Building.</div>
           <button class="copybtn" data-sig="team" type="button">Copy HTML code</button>
         </div>
@@ -1895,7 +1895,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
 
 <footer class="foot">
   <svg width="52" height="52" viewBox="0 0 100 100" class="mk" style="margin:0 auto 18px" aria-hidden="true"><path class="p" d="M31 17A38 38 0 0 0 31 83"/><path class="p" d="M39 31A22 22 0 0 0 39 69"/><circle class="c" cx="50" cy="50" r="6.5"/><path class="p" d="M61 31A22 22 0 0 1 61 69"/><path class="p" d="M69 17A38 38 0 0 1 69 83"/></svg>
-  <div class="wm">blakesuddath.com</div>
+  <div class="wm">BLAKE SUDDATH</div>
   <div class="t">Stop Chasing. Start Building.</div>
   <div class="meta">Brand Bible &middot; Version 2.0 &middot; July 2026</div>
 </footer>
@@ -1933,15 +1933,18 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
     return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 308 80" width="308" height="80" fill="none"><style>.sans{font-family:\'DM Sans\',Helvetica,Arial,sans-serif;}.serif{font-family:\'Instrument Serif\',Georgia,serif;}</style><g transform="translate(2,-3) scale(0.90)"><path d="M 31 17 A 38 38 0 0 0 31 83" stroke="'+mk+'" stroke-width="5.1" stroke-linecap="round"/><path d="M 39 31 A 22 22 0 0 0 39 69" stroke="'+mk+'" stroke-width="5.1" stroke-linecap="round"/><circle cx="50" cy="50" r="5.4" fill="'+mk+'"/><path d="M 61 31 A 22 22 0 0 1 61 69" stroke="'+mk+'" stroke-width="5.1" stroke-linecap="round"/><path d="M 69 17 A 38 38 0 0 1 69 83" stroke="'+mk+'" stroke-width="5.1" stroke-linecap="round"/></g><text class="sans" x="96" y="35" font-size="30" font-weight="700" letter-spacing="-1.3" fill="'+top+'">The Always-On</text><text class="serif" x="96" y="67" font-size="31" font-style="italic" letter-spacing="-0.4" fill="'+bot+'">Agent System</text></svg>';
   }
   var SYSTEM_LOCKUP = sysLockup('#c9a96e','#ffffff','#c9a96e');
+  var BS_WM='BLAKE SUDDATH', BS_TRACK=0.28, _bsc=document.createElement('canvas').getContext('2d');
+  function bsW(size){ _bsc.font='700 '+size+'px "DM Sans", Helvetica, Arial, sans-serif'; var w=0; for(var i=0;i<BS_WM.length;i++){ w+=_bsc.measureText(BS_WM[i]).width+size*BS_TRACK; } return w-size*BS_TRACK; }
+  function bsDraw(ctx,size,x,y){ ctx.font='700 '+size+'px "DM Sans", Helvetica, Arial, sans-serif'; ctx.textAlign='left'; var ls=size*BS_TRACK; for(var i=0;i<BS_WM.length;i++){ ctx.fillText(BS_WM[i],x,y); x+=ctx.measureText(BS_WM[i]).width+ls; } }
   function logoSVG(kind, color){
     var gold='#c9a96e', ink='#f4f1ea', dark='#141414', c=color||gold;
     if(kind==='mark') return svgWrap('0 0 100 100',220,220,markPaths(c));
     if(kind==='favicon') return svgWrap('0 0 100 100',128,128,markPaths(gold));
     if(kind==='mark-dark') return svgWrap('0 0 100 100',220,220,markPaths(dark));
-    if(kind==='wordmark') return svgWrap('0 0 470 90',470,90,'<text x="0" y="60" font-family="Cormorant Garamond, Georgia, serif" font-size="52" font-weight="600" fill="'+ink+'">blakesuddath.com</text>');
-    if(kind==='primary'||kind==='primary-dark'){ var mc=kind==='primary'?gold:dark, tc=kind==='primary'?ink:dark; return svgWrap('0 0 500 100',500,100, markPaths(mc)+'<text x="122" y="63" font-family="Cormorant Garamond, Georgia, serif" font-size="46" font-weight="600" fill="'+tc+'">blakesuddath.com</text>'); }
-    if(kind==='primary-mono') return svgWrap('0 0 500 100',500,100, markPaths(c)+'<text x="122" y="63" font-family="Cormorant Garamond, Georgia, serif" font-size="46" font-weight="600" fill="'+c+'">blakesuddath.com</text>');
-    if(kind==='stacked') return svgWrap('0 0 200 205',200,205,'<g transform="translate(50,0)">'+markPaths(gold)+'</g><text x="100" y="150" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="30" font-weight="600" fill="'+ink+'">blakesuddath.com</text><text x="100" y="178" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif" font-size="9" letter-spacing="3" fill="#c9a96e">AI SYSTEMS FOR REAL ESTATE</text>');
+    if(kind==='wordmark'){ var ww=Math.ceil(16+bsW(44)); return svgWrap('0 0 '+ww+' 80',ww,80,'<text x="8" y="58" font-family="DM Sans, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" letter-spacing="'+(44*BS_TRACK)+'" fill="'+ink+'">'+BS_WM+'</text>'); }
+    if(kind==='primary'||kind==='primary-dark'){ var mc=kind==='primary'?gold:dark, tc=kind==='primary'?ink:dark, pw=Math.ceil(138+bsW(38)); return svgWrap('0 0 '+pw+' 100',pw,100, markPaths(mc)+'<text x="122" y="63" font-family="DM Sans, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="'+(38*BS_TRACK)+'" fill="'+tc+'">'+BS_WM+'</text>'); }
+    if(kind==='primary-mono'){ var pmw=Math.ceil(138+bsW(38)); return svgWrap('0 0 '+pmw+' 100',pmw,100, markPaths(c)+'<text x="122" y="63" font-family="DM Sans, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="'+(38*BS_TRACK)+'" fill="'+c+'">'+BS_WM+'</text>'); }
+    if(kind==='stacked'){ var sw=Math.ceil(Math.max(200,40+bsW(26))); return svgWrap('0 0 '+sw+' 170',sw,170,'<g transform="translate('+((sw-100)/2)+',0)">'+markPaths(gold)+'</g><text x="'+(sw/2+26*BS_TRACK/2)+'" y="150" text-anchor="middle" font-family="DM Sans, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="'+(26*BS_TRACK)+'" fill="'+ink+'">'+BS_WM+'</text>'); }
     if(kind==='system') return SYSTEM_LOCKUP;
     if(kind==='system-mono') return sysLockup(c,c,c);
     return svgWrap('0 0 100 100',200,200,markPaths(gold));
@@ -1956,9 +1959,9 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
   function pngCanvas(kind, color){
     var gold='#c9a96e', ink='#f4f1ea', dark='#141414', S=4, W, H, draw, wm='blakesuddath.com', c=color||gold;
     if(kind==='mark'||kind==='favicon'||kind==='mark-dark'){ W=H=100; var col=(kind==='mark-dark')?dark:(kind==='mark'?c:gold); draw=function(ctx){ drawMark(ctx,col); }; }
-    else if(kind==='wordmark'){ var wf='600 52px "Cormorant Garamond", Georgia, serif'; H=100; W=8+measure(wf,wm); draw=function(ctx){ ctx.fillStyle=ink; ctx.textBaseline='alphabetic'; ctx.font=wf; ctx.fillText(wm,4,62); }; }
-    else if(kind==='primary'||kind==='primary-dark'||kind==='primary-mono'){ var mc,tc,pf='600 46px "Cormorant Garamond", Georgia, serif'; if(kind==='primary'){mc=gold;tc=ink;} else if(kind==='primary-dark'){mc=tc=dark;} else {mc=tc=c;} H=100; W=122+measure(pf,wm)+16; draw=function(ctx){ drawMark(ctx,mc); ctx.fillStyle=tc; ctx.font=pf; ctx.textBaseline='alphabetic'; ctx.fillText(wm,122,63); }; }
-    else if(kind==='stacked'){ W=200; H=205; var sf='600 30px "Cormorant Garamond", Georgia, serif', cf='400 9px "Helvetica Neue", Arial, sans-serif'; draw=function(ctx){ ctx.save(); ctx.translate(50,0); drawMark(ctx,gold); ctx.restore(); ctx.textAlign='left'; ctx.fillStyle=ink; ctx.font=sf; var w1=measure(sf,wm); ctx.fillText(wm,100-w1/2,150); ctx.fillStyle=gold; ctx.font=cf; drawSpaced(ctx,'AI SYSTEMS FOR REAL ESTATE',100,178,3); }; }
+    else if(kind==='wordmark'){ H=80; W=16+bsW(44); draw=function(ctx){ ctx.fillStyle=ink; ctx.textBaseline='alphabetic'; bsDraw(ctx,44,8,58); }; }
+    else if(kind==='primary'||kind==='primary-dark'||kind==='primary-mono'){ var mc,tc; if(kind==='primary'){mc=gold;tc=ink;} else if(kind==='primary-dark'){mc=tc=dark;} else {mc=tc=c;} H=100; W=122+bsW(38)+16; draw=function(ctx){ drawMark(ctx,mc); ctx.fillStyle=tc; ctx.textBaseline='alphabetic'; bsDraw(ctx,38,122,63); }; }
+    else if(kind==='stacked'){ var tw=bsW(26); W=Math.max(200,40+tw); H=170; draw=function(ctx){ ctx.save(); ctx.translate((W-100)/2,0); drawMark(ctx,gold); ctx.restore(); ctx.fillStyle=ink; ctx.textBaseline='alphabetic'; bsDraw(ctx,26,(W-tw)/2,150); }; }
     else if(kind==='system'||kind==='system-mono'){ H=80; var topc=(kind==='system')?'#ffffff':c, botc=(kind==='system')?gold:c, mkc=(kind==='system')?gold:c, fS='700 30px "DM Sans", Helvetica, Arial, sans-serif', fI='italic 400 31px "Instrument Serif", Georgia, serif'; W=96+Math.max(measure(fS,'The Always-On'),measure(fI,'Agent System'))+14; draw=function(ctx){ ctx.save(); ctx.translate(2,-3); ctx.scale(0.9,0.9); drawMark(ctx,mkc); ctx.restore(); ctx.textBaseline='alphabetic'; ctx.fillStyle=topc; ctx.font=fS; ctx.fillText('The Always-On',96,35); ctx.fillStyle=botc; ctx.font=fI; ctx.fillText('Agent System',96,67); }; }
     else { W=H=100; draw=function(ctx){ drawMark(ctx,gold); }; }
     var cv=document.createElement('canvas'); cv.width=Math.round(W*S); cv.height=Math.round(H*S); var ctx=cv.getContext('2d'); ctx.scale(S,S); draw(ctx); return cv;
@@ -1969,7 +1972,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
   /* ---- fill color-variation preview slots (reuse the builders) ---- */
   function markEl(col,size){ return '<svg viewBox="0 0 100 100" width="'+size+'" height="'+size+'" style="display:block">'+markPaths(col)+'</svg>'; }
   document.querySelectorAll('.mkslot').forEach(function(s){ s.innerHTML=markEl(s.getAttribute('data-c'),44); });
-  document.querySelectorAll('.lkslot').forEach(function(s){ var col=s.getAttribute('data-c'); s.innerHTML='<span style="display:inline-flex;align-items:center;gap:11px">'+markEl(col,30)+'<span style="font-family:\'Cormorant Garamond\',Georgia,serif;font-weight:600;font-size:1.16rem;letter-spacing:.01em;color:'+col+'">blakesuddath.com</span></span>'; });
+  document.querySelectorAll('.lkslot').forEach(function(s){ var col=s.getAttribute('data-c'); s.innerHTML='<span style="display:inline-flex;align-items:center;gap:11px">'+markEl(col,30)+'<span style="font-family:\'DM Sans\',Helvetica,Arial,sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.28em;white-space:nowrap;color:'+col+'">BLAKE SUDDATH</span></span>'; });
   document.querySelectorAll('.syslot').forEach(function(s){ var svg=sysLockup(s.getAttribute('data-mk'),s.getAttribute('data-top'),s.getAttribute('data-bot')).replace('width="308" height="80"','width="210" height="55" style="max-width:100%;height:auto"'); s.innerHTML=svg; });
 
   /* ---- gradient PNG downloads ---- */
@@ -2181,7 +2184,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
       ln.forEach(function(w,wi){ if(wi && w.sp) lx+=space; x.font=cmFont(fs,w.b,w.i); x.textAlign='left'; if(onPhoto){ x.shadowColor='rgba(0,0,0,0.55)'; x.shadowBlur=Math.round(fs*0.14); x.shadowOffsetY=2; } x.fillStyle=color; x.fillText(w.t,lx,cy); lx+=w._w; });
     });
     x.shadowColor='transparent'; x.shadowBlur=0; x.shadowOffsetY=0;
-    if(showLogo){ x.textAlign='center'; x.font="600 "+Math.round(W*0.039)+"px 'Cormorant Garamond',Georgia,serif"; x.fillStyle=onPhoto?'#ffffff':(BGS[cmBg].dark?'#c9a96e':'#8a7238'); if(onPhoto){ x.shadowColor='rgba(0,0,0,0.5)'; x.shadowBlur=8; } x.fillText('blakesuddath.com', W/2, H-Math.round(H*0.07)); x.shadowColor='transparent'; x.shadowBlur=0; }
+    if(showLogo){ x.textAlign='left'; var lfs=Math.round(W*0.026), lls=lfs*0.28, lw=0, li, LWM='BLAKE SUDDATH'; x.font="700 "+lfs+"px 'DM Sans',Helvetica,Arial,sans-serif"; for(li=0;li<LWM.length;li++){ lw+=x.measureText(LWM[li]).width+lls; } lw-=lls; x.fillStyle=onPhoto?'#ffffff':(BGS[cmBg].dark?'#c9a96e':'#8a7238'); if(onPhoto){ x.shadowColor='rgba(0,0,0,0.5)'; x.shadowBlur=8; } var lx=(W-lw)/2, ly=H-Math.round(H*0.07); for(li=0;li<LWM.length;li++){ x.fillText(LWM[li],lx,ly); lx+=x.measureText(LWM[li]).width+lls; } x.shadowColor='transparent'; x.shadowBlur=0; }
   }
   var bgWrap=document.getElementById('cm-bgs');
   function cmClearPhoto(setSwatch){ cmPhoto=null; document.getElementById('cm-ov-field').style.display='none'; document.getElementById('cm-photo-clear').style.display='none'; if(setSwatch){ bgWrap.querySelectorAll('.cm-bg').forEach(function(y){y.classList.remove('on');}); var el=bgWrap.querySelector('.cm-bg[data-bg="'+cmBg+'"]'); if(el) el.classList.add('on'); } }
@@ -2219,7 +2222,7 @@ section.blk{padding:74px 0;border-top:1px solid var(--line)}
       + '<div style="font-family:Georgia,serif;font-weight:600;font-size:18px">'+sigEsc(name)+'</div>'
       + '<div style="color:#555">'+sigEsc(title)+'</div>'
       + (contact?'<div style="color:#555;margin-top:4px">'+contact+'</div>':'')
-      + '<div style="font-family:Georgia,serif;color:#c9a96e;font-size:15px;margin-top:8px">'+sigEsc(wm)+'</div>'
+      + '<div style="font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:3px;color:#c9a96e;font-size:12px;margin-top:8px">'+sigEsc(wm)+'</div>'
       + '<div style="font-family:Arial,sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#a8905c;margin-top:2px">'+sigEsc(tag)+'</div>'
       + '</td></tr></table>';
   }
